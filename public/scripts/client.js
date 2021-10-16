@@ -32,5 +32,5 @@ const createMenuItem = (menuItem) => {
     </div>
   </div>
   `
-
+  return $menuItem;
 }
