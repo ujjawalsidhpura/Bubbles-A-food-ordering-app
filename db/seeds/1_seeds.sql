@@ -4,9 +4,12 @@ VALUES ('zsh', 123, 'zsh@gmail.com','zsh','home'),
         ('ebuka', 132, 'ebuka@gmail.com','ebuka','home');
 
 INSERT INTO menus (name, description, price, image_url, ingredients, status)
-VALUES ('burger', 'juicy burger', 10, 'www.burger.com', 'tomato, lettuce, bread, meat', TRUE), --- menu id 1
-        ('fries', 'crispy fries', 5, 'www.fries.com', 'potato, oil', TRUE), --- menu id 2
-        ('coke', 'coke cola', 5, 'www.coke.com', 'water, sugar', TRUE); --- menu id 3
+VALUES ('Mango Bubble Tea', 'It’s just the right amount of creamy, with a fresh green tea base and bright, bold mango flavor. Served with ice for an extra chilled drink on a hot summer day.',
+8.75, 'https://images.app.goo.gl/HytxR4KsZNnZ4ACN8', 'mango juice, green tea, milk, simple syrup and boba', TRUE), --- menu id 1
+        ('Brown Sugar Bubble Tea', 'The cup is usually rimmed with brown sugar syrup to make a pattern. This is why the drink is also known as tiger milk tea or dirty milk tea.',
+        9.95, 'https://images.app.goo.gl/iHr52t6cmUwoCEcc6', 'brown sugar, fresh milk, and tapioca balls', TRUE), --- menu id 2
+        ('THAI Bubble Tea', 'Most local boba shop owners will add food coloring for intense brightness. This Thai boba tea is an iced drink that brings the streets of Thailand into your mouth. It is no wonder why it is one of the most popular bubble tea flavors.',
+        10.25, 'https://images.app.goo.gl/849PtkoFRpWbFEDH6', 'a mix of Ceylon and sweetened condensed milk', TRUE); --- menu id 3
 
 INSERT INTO orders (customer_id, order_time, status)
 VALUES (3, '2021-10-16 10:39:50', FALSE), --- order_id 1
