@@ -11,7 +11,7 @@ const createMenuItem = (menuItem) => {
     </div>
     <div class="card-content">
       <div class="media">
-        <p class="title is-3">Mohca Smoothie Bubble Tea</p>
+        <p class="title is-2">Mohca Smoothie Bubble Tea</p>
       </div>
       <div class="content">
         <span class="description">Description: Lorem ipsum dolor sit amet.</span>
