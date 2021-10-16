@@ -118,6 +118,7 @@ const getOrderHistories = function(customer_id) {
              .catch((err) => err);
 }
 module.exports = {
+  menuItems,
   addCustomer,
   addOrder,
   addOrderDetail,
