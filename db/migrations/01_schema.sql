@@ -19,7 +19,7 @@ CREATE TABLE menus (
   price NUMERIC,
   image_url VARCHAR(255),
   ingredients VARCHAR(255),
-  status BOOLEAN
+  status BOOLEAN DEFAULT true
 );
 
 CREATE TABLE orders (

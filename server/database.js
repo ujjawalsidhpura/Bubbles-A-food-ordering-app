@@ -7,6 +7,16 @@ const pool = new Pool({
   database: 'midterm'
 });
 
+const menuItems = function() {
+  const queryString = `
+    SELECT name description price image_url, ingredients
+    FROM menus;
+  `;
+  return pool.query(queryString)
+             .then((result) => result.rows)
+             .catch((err) => err);
+};
+
 const addCustomer = function(customer) {
   const queryString = `
     INSERT INTO customers (name, phone, email, password, address)
