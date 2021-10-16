@@ -26,13 +26,11 @@ CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
   customer_id INTEGER REFERENCES customers(id) ON DELETE CASCADE,
   order_time TIMESTAMP,
-  status BOOLEAN,
-  price NUMERIC
+  status BOOLEAN
 );
 
 CREATE TABLE order_details (
   id SERIAL PRIMARY KEY,
   order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
-  menu_id INTEGER REFERENCES menus(id) ON DELETE CASCADE,
-  quantity SMALLINT
+  menu_id INTEGER REFERENCES menus(id) ON DELETE CASCADE
 );
