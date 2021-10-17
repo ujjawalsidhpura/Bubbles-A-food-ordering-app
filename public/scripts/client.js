@@ -7,6 +7,10 @@ $(() => {
     const serializedData = $(this).serialize();
     console.log(serializedData)
     $.post('/api/login', serializedData)
+      .done(() => {})
+      .fail((err) => {
+        console.log('failed because: ', err)
+      })
 
   })
 
