@@ -1,0 +1,40 @@
+.card {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3em;
+  margin-bottom: 2em;
+}
+.card-image{
+  height: 100%;
+  width: 40%;
+}
+.card-image img {
+  padding-left: 1em;
+  border-radius: 15%;
+}
+.card-content {
+  width: 60%;
+}
+
+.media {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5em;
+  padding-top: 0.5em;
+}
+
+.order-value {
+  display: flex;
+}
+.increment-order {
+  margin-left: 1em;
+}

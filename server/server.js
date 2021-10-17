@@ -12,7 +12,7 @@ const morgan     = require('morgan');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
-const dbParams = require('./lib/db.js');
+const dbParams = require('../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
@@ -33,15 +33,17 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
-
+const usersRoutes = require("../routes/users");
+const widgetsRoutes = require("../routes/widgets");
+const menusRoutes = require("../routes/menus");
+const loginRoutes = require("../routes/login");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+app.use("/api/menus", menusRoutes(db));
+app.use("/api/login", loginRoutes(db));
 // Note: mount other resources here, using the same pattern above
-
 
 // Home page
 // Warning: avoid creating more routes in this file!
