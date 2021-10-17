@@ -13,6 +13,7 @@ const salt = bcrypt.genSaltSync(10);
 
 router.use(cookieSession({
   name: 'session',
+  path: '/',
   keys: ['This is a key that Im using to encrypt', '$!2@as125AF42%^&*'],
 }))
 
@@ -22,7 +23,6 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
-    console.log(req.session.user_id)
     console.log(email)
     console.log(password)
     db.query(`SELECT * FROM customers;`)
@@ -33,6 +33,7 @@ module.exports = (db) => {
         if (user) {
           console.log(user.id)
           req.session.user_id = user.id;
+          console.log(req.session)
         }
       })
       .catch(err => {
