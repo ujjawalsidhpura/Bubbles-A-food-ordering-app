@@ -21,34 +21,20 @@ router.use(cookieSession({
 
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM customers;`)
-      .then(data => {
-        const cutomers = data.rows;
-        res.json(cutomers);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
-
   router.post("/", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
-    console.log(email)
-    console.log(password)
+
     db.query(`SELECT * FROM customers;`)
       .then(data => {
         const users = data.rows;
-        console.log(users)
-        const user = login(users, email, password)
+        const user = verifyUser(users, email, password);
         if (user) {
           req.session.user_id = user.id;
-          res.send("Logged in!")
+          res.send("Logged in!");
         } else {
-          console.log("Not a user")
+          console.log("Not a user");
+          res.send("Not a user!");
         }
       })
       .catch(err => {
@@ -61,25 +47,19 @@ module.exports = (db) => {
   return router;
 };
 
-const login = (users, email, password) => {
+const verifyUser = (users, email, password) => {
   const user = getUserByEmail(users, email)
-  console.log(user)
 
   if (!user) {
     console.log("no user");
     return;
   }
 
-  if (user.password !== password){
-    console.log("wrong password");
+  if (!bcrypt.compareSync(password, user.password)) {
+    console.log("Incorrect password");
     return;
   }
-  // if (!bcrypt.compareSync(password, user.password)) {
-  //   res.status(403);
-  //   res.send("Incorrect password. <a href = '/login'>Go Back!</a>");
-  //   return;
-  // }
-  console.log('getting here')
+
   return user
 }
 

@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./styles/layout.css">
   <link rel="stylesheet" href="./styles/menu-display.css">
+  <link rel="stylesheet" href="./styles/login-form.css">
   <!-- <link rel="stylesheet" href="./styles/nav.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -91,13 +92,21 @@
     <h1>Bubbles</h1>
   </header>
   <main class="container">
-    <div class="card">
+    <div class="card login-form">
       <div class="card-content">
         <p class="title is-3">Login Form</p>
+        <div>
+          <a class="button is-primary sign-up-button">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light login-button">
+            Log in
+          </a>
+        </div>
         <form action="/api/login" method="POST" id="submit">
           <input name="email" class="input" type="email" id="email" placeholder="Email Address">
           <input name="password" class="input" type="password" id="password" placeholder="Password">
-          <button type="submit" class="button is-primary" id="login">Login</button>
+          <button type="submit" class="button is-primary is-fullwidth" id="login">Login</button>
         </form>
       </div>
     </div>
