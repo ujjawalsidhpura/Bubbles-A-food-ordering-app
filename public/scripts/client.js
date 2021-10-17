@@ -30,12 +30,10 @@ const createMenuItem = (menuItem) => {
           <div class="cost">
             <p><b>Price: </b>${menuItem.price}</p>
           </div>
-          <div class="order-value">
-            <div>quantity: 0</div>
             <div class="increment-order">
               <button class="button is-success is-light">+</button>
+              <output id = "quantity">0</output>
               <button class="button is-danger is-light">-</button>
-            </div>
           </div>
         </div>
       </div>

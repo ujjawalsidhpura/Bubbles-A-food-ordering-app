@@ -36,5 +36,16 @@
   display: flex;
 }
 .increment-order {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  align-items: center;
+}
+
+#quantity {
+  font-weight: 600;
   margin-left: 1em;
+  margin-right: 1em;
+  font-size: 15px;
 }
