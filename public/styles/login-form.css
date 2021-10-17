@@ -1,3 +1,54 @@
 .login-form {
+  justify-content: center;
+  text-align: center;
+  width: 40%;
+  display: none;
+}
+.login-form .title {
+  margin-top: 1em
+}
+.login-content {
+  width: 70%;
+  margin: 0 0 4em 0;
+}
+.login-control {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
 
+#email, #password {
+  margin-top: 1em;
+}
+
+#login {
+  margin-top: 2em;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  z-index: 10000;
+  position: fixed;
+  top: 5em;
+}
+
+#exit {
+  font-size: 0.8em;
+  align-self: flex-start;
+  margin: 2em 0 -2em 2em;
+
+}
+
+.cover {
+  /* background-color: rgba(255,255,255,0.5); */
+  background-color: black;
+  height: 99vh;
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+  opacity: 40%;
+  display: none;
+  top: 56px; /* height of nav right now */
 }

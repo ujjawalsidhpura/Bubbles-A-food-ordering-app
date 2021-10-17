@@ -1,17 +1,38 @@
 $(() => {
   loadMenus();
 
+  const loginButton = $('.login-button');
+  const loginForm = $('.login-form');
+  const exit = $('#exit');
+  const cover = $('.cover');
   $('#submit').on('submit', function(event) {
     event.preventDefault();
     console.log(this)
     const serializedData = $(this).serialize();
     console.log(serializedData)
     $.post('/api/login', serializedData)
-      .done(() => {})
+      .done(() => {
+        loginForm.hide()
+        cover.hide();
+        $('#email').val('');
+        $('#password').val('');
+      })
       .fail((err) => {
         console.log('failed because: ', err)
       })
 
+  })
+
+  loginButton.on('click', function(event) {
+    if (!loginForm.is(":visible")) {
+      loginForm.addClass('flex');
+      loginForm.show();
+      cover.show();
+    }
+  })
+  exit.on('click', function(event) {
+    loginForm.hide();
+    cover.hide();
   })
 
 })

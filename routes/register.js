@@ -40,28 +40,3 @@ module.exports = (db) => {
 
   return router;
 };
-
-const verifyUser = (users, email, password) => {
-  const user = getUserByEmail(users, email)
-
-  if (!user) {
-    console.log("no user");
-    return;
-  }
-
-  if (!bcrypt.compareSync(password, user.password)) {
-    console.log("Incorrect password");
-    return;
-  }
-
-  return user
-}
-
-const getUserByEmail = (userObj, email) => {
-  for (let user in userObj) {
-    if (userObj[user].email === email) {
-      return userObj[user];
-    }
-  }
-  return undefined;
-};
