@@ -75,10 +75,10 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
+            <a class="button is-primary sign-up-button">
               <strong>Sign up</strong>
             </a>
-            <a class="button is-light">
+            <a class="button is-light login-button">
               Log in
             </a>
           </div>
@@ -91,6 +91,16 @@
     <h1>Bubbles</h1>
   </header>
   <main class="container">
+    <div class="card">
+      <div class="card-content">
+        <p class="title is-3">Login Form</p>
+        <form action="/api/login" method="POST" id="submit">
+          <input name="email" class="input" type="email" id="email" placeholder="Email Address">
+          <input name="password" class="input" type="password" id="password" placeholder="Password">
+          <button type="submit" class="button is-primary" id="login">Login</button>
+        </form>
+      </div>
+    </div>
     <div class="menu-container">
       <div class="card">
         <div class="card-image">
@@ -98,7 +108,7 @@
         </div>
         <div class="card-content">
           <div class="media">
-            <p class="title is-2">Classic Milk Bubble Tea</p>
+            <p class="title is-3">Classic Milk Bubble Tea</p>
           </div>
           <div class="content">
             <span class="description"><b>Description: </b>This is where the legacy of bubble tea begins.The creamy and rich flavor of this combination makes this drink the most popular flavor among fans.</span>
@@ -111,8 +121,8 @@
               <div class="order-value">
                 <div>quantity: 0</div>
                 <div class="increment-order">
-                  <button>+</button>
-                  <button>-</button>
+                  <button class="button is-success is-light">+</button>
+                  <button class="button is-danger is-light">-</button>
                 </div>
               </div>
             </div>
