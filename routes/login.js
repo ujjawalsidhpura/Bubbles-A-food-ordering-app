@@ -6,7 +6,7 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const cookieSession = require('cookie-session');
 const bcrypt = require('bcryptjs');
 const salt = bcrypt.genSaltSync(10);
@@ -15,11 +15,25 @@ router.use(cookieSession({
   name: 'session',
   path: '/',
   keys: ['This is a key that Im using to encrypt', '$!2@as125AF42%^&*'],
+  maxAge: 24 * 60 * 60 * 1000
 }))
 
 
 
 module.exports = (db) => {
+  router.get("/", (req, res) => {
+    db.query(`SELECT * FROM customers;`)
+      .then(data => {
+        const cutomers = data.rows;
+        res.json(cutomers);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   router.post("/", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -31,9 +45,10 @@ module.exports = (db) => {
         console.log(users)
         const user = login(users, email, password)
         if (user) {
-          console.log(user.id)
           req.session.user_id = user.id;
-          console.log(req.session)
+          res.send("Logged in!")
+        } else {
+          console.log("Not a user")
         }
       })
       .catch(err => {
@@ -42,6 +57,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
   return router;
 };
 
@@ -50,7 +66,12 @@ const login = (users, email, password) => {
   console.log(user)
 
   if (!user) {
-    console.log("no user")
+    console.log("no user");
+    return;
+  }
+
+  if (user.password !== password){
+    console.log("wrong password");
     return;
   }
   // if (!bcrypt.compareSync(password, user.password)) {
