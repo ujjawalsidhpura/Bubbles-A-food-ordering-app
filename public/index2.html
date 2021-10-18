@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="./styles/layout.css">
   <link rel="stylesheet" href="./styles/menu-display.css">
   <link rel="stylesheet" href="./styles/login-form.css">
-  <!-- <link rel="stylesheet" href="./styles/nav.css"> -->
+  <link rel="stylesheet" href="./styles/nav.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- External JS -->
@@ -112,7 +112,7 @@
         <form action="/api/login" method="POST" id="submit">
           <input name="email" class="input" type="email" id="email" placeholder="Email Address" required>
           <input name="password" class="input" type="password" id="password" placeholder="Password" required>
-          <span class="error"></span>
+          <p class="error"></p>
           <button type="submit" class="button is-primary is-fullwidth" id="login">Log In</button>
         </form>
         <form action="/api/register" method="POST" id="register">
@@ -121,7 +121,7 @@
           <input name="email" class="input" type="email" id="reg-email" placeholder="Email Address" required>
           <input name="password" class="input" type="password" id="reg-password" placeholder="Password" required>
           <input name="address" class="input" type="text" id="address" placeholder="Address" required>
-          <span class="error"></span>
+          <p class="error"></p>
           <button type="submit" class="button is-primary is-fullwidth" id="signup">Sign Up</button>
         </form>
       </div>

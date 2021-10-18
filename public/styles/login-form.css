@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   margin-top: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 #email, #password, #name, #phone, #address, #reg-email, #reg-password {
@@ -23,7 +23,7 @@
 }
 
 #login, #signup {
-  margin-top: 2em;
+  margin-top: 1.5em;
 }
 
 .flex {
@@ -59,4 +59,9 @@
 
 #register {
   display: none;
+}
+
+.error {
+  margin-top: 0.5em;
+  color: red;
 }

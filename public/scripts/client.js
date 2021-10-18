@@ -1,49 +1,48 @@
 $(() => {
   loadMenus();
 
+  // DOM Variables
   const loginButton = $('.login-button');
   const signUpButton = $('.sign-up-button');
+  const logOutButton = $('.logout-button');
   const loginInput = $('#submit')
   const signUpInput = $('#register')
   const loginForm = $('.login-form');
   const exit = $('#exit');
   const cover = $('.cover');
+  const errorMessage = $('.error');
+
+  // Submit login form
   loginInput.on('submit', function(event) {
     event.preventDefault();
     const serializedData = $(this).serialize();
     console.log(serializedData)
     $.post('/api/login', serializedData)
     .done((data) => {
-      console.log(data)
-      loginForm.hide()
-      cover.hide();
-      clearLoginForm();
-      signUpInput.hide()
-      loginInput.hide()
+      window.location.reload(true)
     })
     .fail((err) => {
-      console.log(error)
       console.log('failed because: ', err)
+      $('.error').text(err.responseJSON.message)
     })
   })
+
+  // Submit sign up form
   signUpInput.on('submit', function(event) {
     event.preventDefault();
     const serializedData = $(this).serialize();
     console.log(serializedData)
     $.post('/api/register', serializedData)
       .done(() => {
-        loginForm.hide()
-        cover.hide();
-        clearRegisterForm();
-        signUpInput.hide()
-        loginInput.hide()
+        window.location.reload(true)
       })
       .fail((err) => {
-
         console.log('failed because: ', err)
+        $('.error').text(err.responseJSON.message)
       })
   })
 
+  // Open login form
   loginButton.on('click', function(event) {
     if (!loginForm.is(":visible")) {
       loginInput.show()
@@ -52,9 +51,12 @@ $(() => {
       cover.show();
     } else {
       signUpInput.hide()
+      errorMessage.text('')
       loginInput.show()
     }
   })
+
+  // Open sign up form
   signUpButton.on('click', function(event) {
     if (!loginForm.is(":visible")) {
       loginForm.addClass('flex');
@@ -63,9 +65,12 @@ $(() => {
       cover.show();
     } else {
       loginInput.hide()
+      errorMessage.text('')
       signUpInput.show()
     }
   })
+
+  // exit form
   exit.on('click', function(event) {
     loginForm.hide();
     cover.hide();
@@ -73,8 +78,21 @@ $(() => {
     signUpInput.hide()
     clearLoginForm();
     clearRegisterForm();
+    errorMessage.text('')
   })
 
+  // Log out
+  logOutButton.on('click', function(event){
+    event.preventDefault();
+    $.post('/api/logout')
+      .done(() => {
+        window.location.reload(true)
+      })
+      .fail((err) => {
+
+        console.log('failed because: ', err)
+      })
+  })
 })
 
 const clearRegisterForm = () => {
@@ -143,4 +161,3 @@ const loadMenus = () => {
     }
   });
 };
-
