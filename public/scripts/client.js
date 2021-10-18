@@ -18,9 +18,9 @@ $(document).ready(function() {
 const createMenuItem = (menuItem) => {
   const menuCard = `
   <div class="card">
-    <div class="card-image">
+    <li class="card-image">
       <img src=${menuItem.image_url} alt="Placeholder image">
-    </div>
+    </li>
     <div class="card-content">
       <div class="media">
         <p class="title is-3">${menuItem.name}</p>

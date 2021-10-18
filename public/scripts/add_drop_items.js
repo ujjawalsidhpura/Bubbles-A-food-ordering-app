@@ -5,7 +5,21 @@ export const add_drop_button_event = function(){
     let quantity = $(this).siblings(".quantity").text();
     quantity ++;
     $(this).siblings(".quantity").text(quantity);
-  })
+
+    $(this).closest(".card-content")
+           .siblings(".card-image")
+           .find("img")
+           .clone()
+           .addClass("zoom-add")
+           .appendTo(".shopping-cart")
+     setTimeout(function(){
+       $(".zoom-add").remove();
+     }, 500);
+
+     let counter = $("#shopping-cart-counter").text();
+     counter ++;
+     $("#shopping-cart-counter").text(counter);
+  });
 
   $("button.add-button").mousedown(function(){
     $(this).siblings(".quantity").removeClass("quantity").addClass("quantity-add");
@@ -20,6 +34,20 @@ export const add_drop_button_event = function(){
     if(quantity > 0){
       quantity --;
       $(this).siblings(".quantity").text(quantity);
+
+      $(this).closest(".card-content")
+           .siblings(".card-image")
+           .find("img")
+           .clone()
+           .addClass("zoom-drop")
+           .appendTo(".shopping-cart")
+     setTimeout(function(){
+       $(".zoom-drop").remove();
+     }, 500);
+
+     let counter = $("#shopping-cart-counter").text();
+     counter --;
+     $("#shopping-cart-counter").text(counter);
     }
   })
 
