@@ -6,7 +6,8 @@
   right: 5rem;
 }
 
-#shopping-cart-counter{
+.shopping-cart-counter{
+  visibility: hidden;
   position: relative;
   font-weight: 600;
   font-size: 36px;
@@ -14,6 +15,25 @@
   bottom: -1rem;
   right: -1.2rem;
 }
+
+.shopping-cart-counter-add{
+  position: relative;
+  font-weight: 600;
+  font-size: 36px;
+  color: #63cdda;
+  bottom: -1rem;
+  right: -1.2rem;
+}
+
+.shopping-cart-counter-drop{
+  position: relative;
+  font-weight: 600;
+  font-size: 36px;
+  color: #cf6a87;
+  bottom: -1rem;
+  right: -1.2rem;
+}
+
 .zoom-add {
   position: absolute;
   bottom: 5rem;

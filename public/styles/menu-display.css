@@ -44,6 +44,7 @@
 }
 
 .quantity {
+  visibility: hidden;
   font-weight: 600;
   margin-left: 1em;
   margin-right: 1em;
@@ -74,5 +75,10 @@
   font-size: 15px;
   color: #f5cd79;
 }
+
+.drop-button {
+  visibility: hidden;
+}
+
 
 
