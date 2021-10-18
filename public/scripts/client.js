@@ -2,40 +2,92 @@ $(() => {
   loadMenus();
 
   const loginButton = $('.login-button');
+  const signUpButton = $('.sign-up-button');
+  const loginInput = $('#submit')
+  const signUpInput = $('#register')
   const loginForm = $('.login-form');
   const exit = $('#exit');
   const cover = $('.cover');
-  $('#submit').on('submit', function(event) {
+  loginInput.on('submit', function(event) {
     event.preventDefault();
-    console.log(this)
     const serializedData = $(this).serialize();
     console.log(serializedData)
     $.post('/api/login', serializedData)
+    .done((data) => {
+      console.log(data)
+      loginForm.hide()
+      cover.hide();
+      clearLoginForm();
+      signUpInput.hide()
+      loginInput.hide()
+    })
+    .fail((err) => {
+      console.log(error)
+      console.log('failed because: ', err)
+    })
+  })
+  signUpInput.on('submit', function(event) {
+    event.preventDefault();
+    const serializedData = $(this).serialize();
+    console.log(serializedData)
+    $.post('/api/register', serializedData)
       .done(() => {
         loginForm.hide()
         cover.hide();
-        $('#email').val('');
-        $('#password').val('');
+        clearRegisterForm();
+        signUpInput.hide()
+        loginInput.hide()
       })
       .fail((err) => {
+
         console.log('failed because: ', err)
       })
-
   })
 
   loginButton.on('click', function(event) {
     if (!loginForm.is(":visible")) {
+      loginInput.show()
       loginForm.addClass('flex');
       loginForm.show();
       cover.show();
+    } else {
+      signUpInput.hide()
+      loginInput.show()
+    }
+  })
+  signUpButton.on('click', function(event) {
+    if (!loginForm.is(":visible")) {
+      loginForm.addClass('flex');
+      signUpInput.show()
+      loginForm.show();
+      cover.show();
+    } else {
+      loginInput.hide()
+      signUpInput.show()
     }
   })
   exit.on('click', function(event) {
     loginForm.hide();
     cover.hide();
+    loginInput.hide()
+    signUpInput.hide()
+    clearLoginForm();
+    clearRegisterForm();
   })
 
 })
+
+const clearRegisterForm = () => {
+  $('#name').val('');
+  $('#phone').val('');
+  $('#reg-email').val('');
+  $('#reg-password').val('');
+  $('#address').val('');
+}
+const clearLoginForm = () => {
+  $('#email').val('');
+  $('#password').val('');
+}
 
 const createMenuItem = (menuItem) => {
   const $menuItem = `

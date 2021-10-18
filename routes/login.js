@@ -15,6 +15,19 @@ router.use(cookieSession({
 
 
 module.exports = (db) => {
+  router.get("/", (req, res) => {
+    db.query(`SELECT * FROM customers;`)
+      .then(data => {
+        const users = data.rows;
+        res.json(users);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   router.post("/", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -27,12 +40,12 @@ module.exports = (db) => {
           req.session.user_id = user.id;
           res.send("Logged in!");
         } else {
-          console.log("Not a user");
-          res.send("Not a user!");
+
         }
       })
       .catch(err => {
         res
+          .send('Incorrect credentials')
           .status(500)
           .json({ error: err.message });
       });

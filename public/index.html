@@ -82,6 +82,9 @@
             <a class="button is-light login-button">
               Log in
             </a>
+            <a class="button is-danger logout-button is-light">
+              Log out
+            </a>
           </div>
         </div>
       </div>
@@ -97,7 +100,6 @@
     <div class="card login-form">
       <a class="button is-danger is-light" id="exit">&times;</a>
       <p class="title is-3">Login Form</p>
-
       <div class="login-content">
         <div class="login-control">
           <a class="button is-primary is-fullwidth sign-up-button">
@@ -108,28 +110,23 @@
           </a>
         </div>
         <form action="/api/login" method="POST" id="submit">
-          <input name="email" class="input" type="email" id="email" placeholder="Email Address">
-          <input name="password" class="input" type="password" id="password" placeholder="Password">
-          <button type="submit" class="button is-primary is-fullwidth" id="login">Login</button>
+          <input name="email" class="input" type="email" id="email" placeholder="Email Address" required>
+          <input name="password" class="input" type="password" id="password" placeholder="Password" required>
+          <span class="error"></span>
+          <button type="submit" class="button is-primary is-fullwidth" id="login">Log In</button>
         </form>
-      </div>
-
-      <div class="login-content">
-        <div class="login-control">
-          <a class="button is-primary is-fullwidth sign-up-button">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light is-fullwidth login-button">
-            Log in
-          </a>
-        </div>
-        <form action="/api/login" method="POST" id="submit">
-          <input name="email" class="input" type="email" id="email" placeholder="Email Address">
-          <input name="password" class="input" type="password" id="password" placeholder="Password">
-          <button type="submit" class="button is-primary is-fullwidth" id="login">Login</button>
+        <form action="/api/register" method="POST" id="register">
+          <input name="name" class="input" type="text" id="name" placeholder="First Name" required>
+          <input name="phone" class="input" type="tel" id="phone" placeholder="Phone Number" required>
+          <input name="email" class="input" type="email" id="reg-email" placeholder="Email Address" required>
+          <input name="password" class="input" type="password" id="reg-password" placeholder="Password" required>
+          <input name="address" class="input" type="text" id="address" placeholder="Address" required>
+          <span class="error"></span>
+          <button type="submit" class="button is-primary is-fullwidth" id="signup">Sign Up</button>
         </form>
       </div>
     </div>
+
     <div class="menu-container">
       <div class="card">
         <div class="card-image">
