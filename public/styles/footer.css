@@ -74,6 +74,7 @@
 }
 
 .total-price{
+  visibility: hidden;
   color: black;
   font-size: 24px;
   display: flex;

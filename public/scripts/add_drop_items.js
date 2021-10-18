@@ -26,6 +26,7 @@ export const add_drop_button_event = function(){
      let total_price = Number($(".total-price-value").text());
      total_price += price;
      $(".total-price-value").text(total_price.toFixed(2))
+     $(".total-price").css("visibility","visible")
   });
 
   $("button.add-button").mousedown(function(){
@@ -70,6 +71,9 @@ export const add_drop_button_event = function(){
      let total_price = Number($(".total-price-value").text());
      total_price -= price;
      $(".total-price-value").text(total_price.toFixed(2))
+     if (total_price === 0){
+      $(".total-price").css("visibility","hidden")
+     }
     }
 
   })
