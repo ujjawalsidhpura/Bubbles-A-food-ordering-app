@@ -73,3 +73,9 @@
   100%{opacity: 0; right: 5rem; bottom: 5rem}
 }
 
+.total-price{
+  color: black;
+  font-size: 24px;
+  display: flex;
+  flex-direction: row;
+}

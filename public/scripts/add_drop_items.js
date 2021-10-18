@@ -22,6 +22,10 @@ export const add_drop_button_event = function(){
      counter ++;
      $(".shopping-cart-counter").text(counter);
      $(".shopping-cart-counter").css("visibility","visible");
+     let price = Number($(this).parent().siblings(".cost").text().slice(19));
+     let total_price = Number($(".total-price-value").text());
+     total_price += price;
+     $(".total-price-value").text(total_price.toFixed(2))
   });
 
   $("button.add-button").mousedown(function(){
@@ -61,6 +65,11 @@ export const add_drop_button_event = function(){
      if (counter === 0) {
       $(".shopping-cart-counter").css("visibility","hidden");
      }
+
+     let price = Number($(this).parent().siblings(".cost").text().slice(19));
+     let total_price = Number($(".total-price-value").text());
+     total_price -= price;
+     $(".total-price-value").text(total_price.toFixed(2))
     }
 
   })
