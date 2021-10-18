@@ -7,31 +7,40 @@
 }
 
 .shopping-cart-counter{
+  text-align: center;
   visibility: hidden;
   position: relative;
+  border: none;
+  border-radius: 50%;
+  background-color: #ffbe76;
   font-weight: 600;
   font-size: 36px;
   color: black;
-  bottom: -1rem;
-  right: -1.2rem;
+
 }
 
 .shopping-cart-counter-add{
   position: relative;
+  text-align: center;
   font-weight: 600;
   font-size: 36px;
+  border: none;
+  border-radius: 30%;
+  background-color: #ffbe76;
   color: #63cdda;
-  bottom: -1rem;
-  right: -1.2rem;
+
 }
 
 .shopping-cart-counter-drop{
   position: relative;
+  text-align: center;
   font-weight: 600;
   font-size: 36px;
+  border: none;
+  border-radius: 30%;
+  background-color: #ffbe76;
   color: #cf6a87;
-  bottom: -1rem;
-  right: -1.2rem;
+
 }
 
 .zoom-add {
