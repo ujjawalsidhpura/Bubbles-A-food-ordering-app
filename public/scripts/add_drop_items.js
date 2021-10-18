@@ -1,4 +1,3 @@
-//  $(document).ready(function() {
 export const add_drop_button_event = function(){
 
   $("button.add-button").click(function(){
@@ -79,6 +78,3 @@ export const add_drop_button_event = function(){
     tweets_footer.css("box-shadow", "none");
   });
 }
-
-
-// })
