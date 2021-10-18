@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require('morgan');
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -45,6 +46,15 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/menus", menusRoutes(db));
 app.use("/api/login", loginRoutes(db));
 app.use("/api/orders", ordersRoutes()); /* to be modified later */
+
+app.post('/sms', (req, res) => {
+  const twiml = new MessagingResponse();
+
+  twiml.message('Reply Functionality is working.Your order will be ready in 15 minutes');
+
+  res.writeHead(200, { 'Content-Type': 'text/xml' });
+  res.end(twiml.toString());
+}); /* for reply func */
 
 // Note: mount other resources here, using the same pattern above
 
