@@ -9,14 +9,6 @@ $(() => {
     $.post('/api/login', serializedData)
 
   })
-
-  $('#order-submit-btn').on('click', function (event) {
-    event.preventDefault();
-
-    $.post('/api/orders', '')
-
-  })
-
 })
 
 const createMenuItem = (menuItem) => {
