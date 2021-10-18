@@ -48,4 +48,29 @@
   margin-left: 1em;
   margin-right: 1em;
   font-size: 15px;
+  color: black;
+}
+
+.quantity-add {
+  font-weight: 600;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-size: 15px;
+  color: #63cdda;
+}
+
+.quantity-drop {
+  font-weight: 600;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-size: 15px;
+  color: #cf6a87;
+}
+
+.quantity-hover {
+  font-weight: 600;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-size: 15px;
+  color: #f5cd79;
 }

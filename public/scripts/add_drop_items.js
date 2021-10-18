@@ -1,27 +1,42 @@
 //  $(document).ready(function() {
 export const add_drop_button_event = function(){
-  let quantity = 0;
 
   $("button.add-button").click(function(){
-    console.log("hello");
+    let quantity = $(this).siblings(".quantity").text();
     quantity ++;
     $(this).siblings(".quantity").text(quantity);
   })
 
+  $("button.add-button").mousedown(function(){
+    $(this).siblings(".quantity").removeClass("quantity").addClass("quantity-add");
+  })
+
+  $("button.add-button").mouseup(function(){
+    $(this).siblings(".quantity-add").removeClass("quantity-add").addClass("quantity");
+  })
+
   $("button.drop-button").click(function(){
+    let quantity = $(this).siblings(".quantity").text();
     if(quantity > 0){
-      console.log("hello");
       quantity --;
       $(this).siblings(".quantity").text(quantity);
     }
   })
 
+  $("button.drop-button").mousedown(function(){
+    $(this).siblings(".quantity").removeClass("quantity").addClass("quantity-drop");
+  })
+
+  $("button.drop-button").mouseup(function(){
+    $(this).siblings(".quantity-drop").removeClass("quantity-drop").addClass("quantity");
+  })
+
   $(".quantity").on("mouseenter", function() {
-    $(this).css("color","#fad390");
+    $(this).removeClass("quantity").addClass("quantity-hover");
   });
 
   $(".quantity").on("mouseleave", function() {
-    $(this).css("color","#60a3bc");
+    $(this).removeClass("quantity-hover").addClass("quantity");
   });
 
   $(".card").on("mouseenter", function() {
