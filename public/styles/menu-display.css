@@ -43,7 +43,7 @@
   align-items: center;
 }
 
-#quantity {
+.quantity {
   font-weight: 600;
   margin-left: 1em;
   margin-right: 1em;

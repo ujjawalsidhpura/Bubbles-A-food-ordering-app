@@ -1,4 +1,7 @@
-$(() => {
+import {add_drop_button_event} from './add_drop_items.js'
+$(document).ready(function() {
+  // const {  add_drop_button_event } = require('./add_drop_items');
+
   loadMenus();
 
   $('#submit').on('submit', function(event) {
@@ -13,7 +16,7 @@ $(() => {
 })
 
 const createMenuItem = (menuItem) => {
-  const $menuItem = `
+  const menuCard = `
   <div class="card">
     <div class="card-image">
       <img src=${menuItem.image_url} alt="Placeholder image">
@@ -31,16 +34,17 @@ const createMenuItem = (menuItem) => {
             <p><b>Price: </b>${menuItem.price}</p>
           </div>
             <div class="increment-order">
-              <button class="button is-success is-light">+</button>
-              <output id = "quantity">0</output>
-              <button class="button is-danger is-light">-</button>
-          </div>
+            <button class="button is-success is-light add-button" id = "add-button">+</button>
+            <output class = "quantity">0</output>
+            <button class="button is-danger is-light drop-button" id = "drop-button">-</button>
+            </div>
         </div>
       </div>
     </div>
   </div>
+  </div>
   `
-  return $menuItem;
+  return menuCard;
 };
 
 const renderMenus = function(menus_data) {
@@ -48,6 +52,7 @@ const renderMenus = function(menus_data) {
     const $menuItem = createMenuItem(menuItem);
     $(".menu-container").append($menuItem);
   }
+  add_drop_button_event();
 }
 
 const loadMenus = () => {
@@ -64,4 +69,6 @@ const loadMenus = () => {
     }
   });
 };
+
+
 

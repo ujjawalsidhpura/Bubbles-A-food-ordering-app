@@ -23,7 +23,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!-- App JS -->
-  <script src="./scripts/client.js"></script>
+  <script type="module" src="./scripts/client.js"></script>
+  <script type="module" src="./scripts/add_drop_items.js"></script>
   <script src="./scripts/hamburger.js"></script>
 </head>
 
@@ -93,8 +94,8 @@
     <h1>Bubbles</h1>
   </header>
   <main class="container">
-    <div class="card">
-      <div class="card-content">
+    <div class="login-card">
+      <div class="login-card-content">
         <p class="title is-3">Login Form</p>
         <form action="/api/login" method="POST" id="submit">
           <input name="email" class="input" type="email" id="email" placeholder="Email Address">
@@ -104,6 +105,7 @@
       </div>
     </div>
     <div class="menu-container">
+      <!--
       <div class="card">
         <div class="card-image">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcSCOlniJMr4V7dNRTupyATwGeWoL5H5bSUA&usqp=CAU" alt="Placeholder image">
@@ -122,16 +124,45 @@
               </div>
               <div class="order-value">
                 <div class="increment-order">
-                  <button class="button is-success is-light add-button">+</button>
-                  <output id = "quantity">0</output>
-                  <button class="button is-danger is-light drop-button">-</button>
+                  <button class="button is-success is-light add-button" id = "add-button">+</button>
+                  <output class = "quantity">0</output>
+                  <button class="button is-danger is-light drop-button" id = "drop-button">-</button>
                 </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
+      <div class="card">
+        <div class="card-image">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcSCOlniJMr4V7dNRTupyATwGeWoL5H5bSUA&usqp=CAU" alt="Placeholder image">
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <p class="title is-3">Classic Milk Bubble Tea</p>
+          </div>
+          <div class="content">
+            <span class="description"><b>Description: </b>This is where the legacy of bubble tea begins.The creamy and rich flavor of this combination makes this drink the most popular flavor among fans.</span>
+            <br>
+            <span class="ingredients"><b>Ingredients: </b>powder, syrup, fruit juice, or puree</span>
+            <div class="card-footer">
+              <div class="cost">
+                <p><b>Price: </b>$10.00</p>
+              </div>
+              <div class="order-value">
+                <div class="increment-order">
+                  <button class="button is-success is-light add-button" id = "add-button">+</button>
+                  <output class = "quantity">0</output>
+                  <button class="button is-danger is-light drop-button" id = "drop-button">-</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
+    </div>
   </main>
   <footer>
     <div class="shopping-cart"><i class="fas fa-shopping-cart"></i></div>
