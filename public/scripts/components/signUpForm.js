@@ -32,8 +32,8 @@ $(() => {
       loginForm.show();
       cover.show();
     } else {
-      loginInput.hide()
       errorMessage.text('')
+      $('#submit').hide()
       signUpInput.show()
     }
   })

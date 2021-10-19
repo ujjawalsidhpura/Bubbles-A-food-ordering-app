@@ -1,8 +1,4 @@
 $(() => {
-  let currentUser = null;
-  function updateNav(user) {
-
-  }
   const $nav = `
   <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -51,7 +47,6 @@ $(() => {
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item">Hi Ebuka 👋🏽</div>
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-primary sign-up-button">
