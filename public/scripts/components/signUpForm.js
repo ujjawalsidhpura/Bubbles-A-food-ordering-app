@@ -23,6 +23,16 @@ $(() => {
   const cover = $('.cover');
   const errorMessage = $('.error');
 
+  const clearRegisterForm = () => {
+    $('#name').val('');
+    $('#phone').val('');
+    $('#reg-email').val('');
+    $('#reg-password').val('');
+    $('#address').val('');
+    loginForm.hide();
+    cover.hide();
+  }
+
   // Open sign up form
   signUpButton.on('click', function(event) {
     console.log("Here")
@@ -32,7 +42,8 @@ $(() => {
       loginForm.show();
       cover.show();
     } else {
-      loginInput.hide()
+      $("#submit").hide();
+      // loginInput.hide()
       errorMessage.text('')
       signUpInput.show()
     }
@@ -59,8 +70,13 @@ $(() => {
     signUp(data)
       .then(getMyDetails)
       .then((json) => {
-        console.log(json)
+        clearRegisterForm();
+        console.log(json);
         // signUpInput.hide()
+      })
+      .fail((err) => {
+        console.log('failed because: ', err)
+        $('.error').text(err.responseJSON.message)
       })
   })
 })

@@ -6,7 +6,17 @@ const pool = new Pool({
   host: 'localhost',
   database: 'midterm'
 });
-
+const getCustomers = function() {
+  const queryString = `
+    SELECT *
+    FROM customers;
+  `;
+  return pool.query(queryString)
+             .then((result) => result.rows)
+             .catch((err) => {
+               console.log(err)
+              });
+}
 const menuItems = function() {
   const queryString = `
     SELECT *
@@ -148,6 +158,7 @@ const getUserWithEmail = function(email) {
     });
 }
 module.exports = {
+  getCustomers,
   menuItems,
   addCustomer,
   addOrder,

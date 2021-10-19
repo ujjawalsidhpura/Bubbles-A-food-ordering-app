@@ -4,17 +4,25 @@ module.exports = function(router, database) {
   // Create a new user
   router.post('/', (req, res) => {
     const user = req.body;
+    let userExists = database.getUserWithEmail(user.email);
+    console.log("where is my user")
+    console.log(user.email);
+    console.log(userExists);
     user.password = bcrypt.hashSync(user.password, 12);
+    if (!userExists) {
     database.addCustomer(user)
     .then(user => {
-      if (!user) {
-        res.send({error: "error"});
-        return;
-      }
+      console.log(user);
+        //res.send({error: "error"});
       req.session.userId = user.id;
       res.send("🤗");
-    })
-    .catch(e => res.send(e));
+      })
+      .catch(e => res.send(e));
+    } else {
+      return res.status(404).send({message: 'User Already Exists!'})
+
+    }
+
   });
 
   router.get("/me", (req, res) => {
@@ -50,8 +58,7 @@ module.exports = function(router, database) {
     login(email, password)
       .then(user => {
         if (!user) {
-          res.send({error: "error"});
-          return;
+          return res.status(404).send({message: 'Incorrect username or password'})
         }
         req.session.userId = user.id;
         res.send({user: {id: userId, name: user.name, password: user.password, email: user.email, address: user.address }});

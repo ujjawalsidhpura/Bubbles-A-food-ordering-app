@@ -20,6 +20,14 @@ $(() => {
   const cover = $('.cover');
   const errorMessage = $('.error');
 
+
+  const clearLoginForm = () => {
+    $('#email').val('');
+    $('#password').val('');
+    loginForm.hide();
+    cover.hide();
+  }
+
   // Open login form
   loginButton.on('click', function(event) {
     if (!loginForm.is(":visible")) {
@@ -53,7 +61,12 @@ $(() => {
     const data = $(this).serialize();
     logIn(data)
       .then(json => {
-        console.log(json.user)
+        clearLoginForm();
+        console.log(json.user);
       })
+      .fail((err) => {
+              console.log('failed because: ', err)
+              $('.error').text(err.responseJSON.message)
+            })
   })
 })

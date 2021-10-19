@@ -4,18 +4,7 @@ const bcrypt = require('bcryptjs');
 const salt = bcrypt.genSaltSync(10);
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM customers;`)
-      .then(data => {
-        const users = data.rows;
-        res.json(users);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
+
 
   router.post("/", (req, res) => {
     const email = req.body.email;
