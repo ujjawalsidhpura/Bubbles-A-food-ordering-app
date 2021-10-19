@@ -5,12 +5,14 @@ const sms = require('twilio')(accountSid, authToken);
 
 const sendSMS = function (data) {
 
-  const message = messageMaker(data);
-  const clientNum = data[0].phone;
-  console.log(clientNum)
+  const messageToOwner = orderMessageMaker(data);
+  const clientNum = data[0].phone; // Get Client's number from data
+  const clientName = data[0].client;
+  console.log(clientName)
+
   sms.messages
     .create({
-      body: `${message}`, // Order details
+      body: `${messageToOwner}`, // Order details
       from: '+13433125653', // Twilio num for Restaurant
       to: '+12048089972' // Restaurant owner's number
     })
@@ -21,13 +23,13 @@ const sendSMS = function (data) {
 
         sms.messages
           .create({
-            body: `Your order will be ready in 15 minutes`, // Confirmation with time.
+            body: `Thank you ${clientName} for placing an order. You order will be ready in 20 minutes`, // Confirmation with time.
             from: '+13433125653',
             to: clientNum // Client Number
           })
           .then(message => console.log('Message ID', message.sid))
 
-      }, 2000);
+      }, 2000); //Change this timeout to 5 seconds later
 
     })
 }
@@ -36,8 +38,9 @@ module.exports = sendSMS;
 
 
 // Helper To Frame a message //
-const messageMaker = function (data) {
-  let message = 'An order has been placed for:';
+const orderMessageMaker = function (data) {
+  const clientName = data[0].client;
+  let message = `${clientName} has placed an order.Order is :`;
   let array = []
   let result = []
   let count = {}

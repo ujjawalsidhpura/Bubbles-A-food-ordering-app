@@ -8,7 +8,9 @@ module.exports = (db) => {
 
   router.get('/:id', (req, res) => {
 
-    db.query(`SELECT customers.phone, menus.name
+    db.query(`SELECT customers.phone ,
+              customers.name AS client ,
+              menus.name
               FROM order_details JOIN menus
               ON order_details.menu_id = menus.id
               JOIN orders
@@ -30,7 +32,9 @@ module.exports = (db) => {
 
     order_id = req.body.order_id;
 
-    db.query(`SELECT customers.phone, menus.name
+    db.query(`SELECT customers.phone,
+              customers.name AS client,
+              menus.name
               FROM order_details JOIN menus
               ON order_details.menu_id = menus.id
               JOIN orders
