@@ -1,4 +1,5 @@
 const { Pool } = require('pg');
+const bcrypt = require('bcryptjs');
 
 const pool = new Pool({
   user: 'labber',
@@ -35,7 +36,7 @@ const addCustomer = function(customer) {
     VALUES ($1, $2, $3, $4, $5);
   `;
   const {name, phone, email, password, address} = customer;
-  const queryParams = [name, phone, email, password, address];
+  const queryParams = [name, phone, email, bcrypt.hashSync(password,10), address];
 
   return pool.query(queryString, queryParams)
              .then((result) => result.rows)
@@ -158,7 +159,7 @@ const getUserWithEmail = function(email) {
     });
 }
 module.exports = {
-  getCustomers,
+getCustomers,
   menuItems,
   addCustomer,
   addOrder,

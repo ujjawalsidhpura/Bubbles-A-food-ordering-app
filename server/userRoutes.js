@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const { getUserWithEmail } = require('./database');
 
 module.exports = function(router, database) {
   // Create a new user
@@ -7,40 +8,31 @@ module.exports = function(router, database) {
     database.getUserWithEmail(user.email)
             .then(result => {
               if (result){
-                console.log(result);
                 return res.status(404).send({message: 'User Already Exists!'})
               } else {
                 database.addCustomer(user)
-                        .then(user => {
-                          console.log(user);
-                          req.session.userId = user.id;
-                          res.send("🤗");
+                        .then(() => {
+                              // req.session.userId = user.id;
+                              // res.send("🤗");
+                              console.log(user.email, user.password);
+                              login(user.email, user.password)
+                                  .then(user => {
+                                    console.log(user);
+                                    if (!user) {
+                                      return res.status(404).send({message: 'Incorrect username or password'})
+                                    }
+                                    req.session.userId = user.id;
+                                    res.send({user: {id: user.id, name: user.name, password: user.password, email: user.email, address: user.address }});
+                                  });
+
                         })
+
               }
             })
             .catch(e => {
                 console.log(e);
               }
               );
-
-    // let userExists = database.getUserWithEmail(user.email);
-    // console.log("where is my user")
-    // console.log(user.email);
-    // console.log(userExists);
-    // user.password = bcrypt.hashSync(user.password, 12);
-    // if (userExists) {
-    // database.addCustomer(user)
-    // .then(user => {
-    //   console.log(user);
-    //     //res.send({error: "error"});
-    //   req.session.userId = user.id;
-    //   res.send("🤗");
-    //   })
-    //   .catch(e => res.send(e));
-    // } else {
-    //   return res.status(404).send({message: 'User Already Exists!'})
-
-    // }
 
   });
 
