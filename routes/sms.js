@@ -5,16 +5,20 @@ const sms = require('twilio')(accountSid, authToken);
 
 const sendSMS = function (data) {
 
+  const twilioNum = '+13433125653';
+  const restaurantOwnerNum = '+12048089972';
   const messageToOwner = orderMessageMaker(data);
-  const clientNum = data[0].phone; // Get Client's number from data
+  const messageToClient = clientMessageMaker(data);
+  const clientNum = data[0].phone;
   const clientName = data[0].client;
-  console.log(clientName)
 
+
+  // 1. Send Message to Owner giving order details and client name
   sms.messages
     .create({
-      body: `${messageToOwner}`, // Order details
-      from: '+13433125653', // Twilio num for Restaurant
-      to: '+12048089972' // Restaurant owner's number
+      body: messageToOwner,
+      from: twilioNum,
+      to: restaurantOwnerNum
     })
     .then(message => console.log('Message ID', message.sid))
     .then(() => {
@@ -23,9 +27,9 @@ const sendSMS = function (data) {
 
         sms.messages
           .create({
-            body: `Thank you ${clientName} for placing an order. You order will be ready in 20 minutes`, // Confirmation with time.
-            from: '+13433125653',
-            to: clientNum // Client Number
+            body: messageToClient,
+            from: twilioNum,
+            to: clientNum
           })
           .then(message => console.log('Message ID', message.sid))
 
@@ -40,7 +44,7 @@ module.exports = sendSMS;
 // Helper To Frame a message //
 const orderMessageMaker = function (data) {
   const clientName = data[0].client;
-  let message = `${clientName} has placed an order.Order is :`;
+  let message = `An order placed by: ${clientName}. Order details:`;
   let array = []
   let result = []
   let count = {}
@@ -64,11 +68,14 @@ const orderMessageMaker = function (data) {
   }
 
   for (let item in count) {
-    message += `* ${count[item]} ${item} *`
+    message += `${count[item]} ${item} `
   }
 
   return message;
 }
 
-
+const clientMessageMaker = function (data) {
+  const clientName = data[0].client;
+  return `Hello ${clientName}, Thank you for placing an order at Bubbles. Your order should be ready in approximately 15 minutes.`
+}
 
