@@ -12,5 +12,4 @@ $(() => {
   `)
   $('.login-content').append(signUpForm)
 
-
 })
