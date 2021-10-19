@@ -9,14 +9,30 @@ const sendSMS = function (data) {
 
   sms.messages
     .create({
-      body: `${message}`,
+      body: `${message}`, // Order details
       from: '+13433125653', // Twilio num for Restaurant
-      to: '+12048089972'
+      to: '+12048089972' // Restaurant owner's number
     })
-    .then(message => console.log('Message ID', message.sid));
+    .then(message => console.log('Message ID', message.sid))
+    .then(() => {
+
+      setTimeout(function () {
+
+        sms.messages
+          .create({
+            body: `${message}`, // Confirmation with time.
+            from: '+13433125653',
+            to: '+18735090139' // Client Number
+          })
+          .then(message => console.log('Message ID', message.sid))
+
+      }, 2000);
+
+    })
 }
 
 module.exports = sendSMS;
+
 
 // Helper To Frame a message //
 const messageMaker = function (data) {

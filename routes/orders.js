@@ -24,7 +24,7 @@ module.exports = (db) => {
 
   router.post('/', (req, res) => {
 
-    order_id = req.body.id
+    order_id = req.body.order_id;
 
     db.query(`SELECT name
               FROM order_details JOIN menus
@@ -37,3 +37,6 @@ module.exports = (db) => {
   })
   return router;
 };
+
+
+
