@@ -14,7 +14,8 @@ module.exports = function(router, database) {
                         .then(user => {
                           console.log(user);
                           req.session.userId = user.id;
-                          res.send("🤗");
+                          // res.send("🤗");
+                          res.send({user: {id: userId, name: user.name, password: user.password, email: user.email, address: user.address }});
                         })
               }
             })

@@ -1,3 +1,4 @@
+
 $(() => {
   const logInForm = $(`
   <form action="/users/login" method="POST" id="submit">
@@ -62,6 +63,7 @@ $(() => {
       .then(json => {
         clearLoginForm();
         console.log(json.user);
+        window.location.reload(true)
       })
       .fail((err) => {
               console.log('failed because: ', err)
@@ -69,3 +71,4 @@ $(() => {
             })
   })
 })
+
