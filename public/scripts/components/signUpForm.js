@@ -42,9 +42,8 @@ $(() => {
       loginForm.show();
       cover.show();
     } else {
-      $("#submit").hide();
-      // loginInput.hide()
       errorMessage.text('')
+      $('#submit').hide()
       signUpInput.show()
     }
   })
