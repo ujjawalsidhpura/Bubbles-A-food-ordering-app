@@ -48,7 +48,6 @@ $(() => {
     cover.hide();
     loginInput.hide()
     signUpInput.hide()
-    console.log('Here')
     clearLoginForm();
     clearRegisterForm();
     errorMessage.text('')

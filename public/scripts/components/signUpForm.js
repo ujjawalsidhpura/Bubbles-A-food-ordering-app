@@ -1,6 +1,6 @@
 $(() => {
   const signUpForm = $(`
-  <form action="/users/" method="POST" id="register">
+  <form action="/users" method="POST" id="register">
     <input name="name" class="input" type="text" id="name" placeholder="First Name" required>
     <input name="phone" class="input" type="tel" id="phone" placeholder="Phone Number" required>
     <input name="email" class="input" type="email" id="reg-email" placeholder="Email Address" required>
@@ -54,7 +54,6 @@ $(() => {
     cover.hide();
     loginInput.hide()
     signUpInput.hide()
-    console.log('Here')
     clearLoginForm();
     clearRegisterForm();
     errorMessage.text('')
