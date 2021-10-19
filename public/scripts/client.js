@@ -1,7 +1,7 @@
 $(() => {
   loadMenus();
 
-  $('#submit').on('submit', function(event) {
+  $('#submit').on('submit', function (event) {
     event.preventDefault();
     console.log(this)
     const serializedData = $(this).serialize();
@@ -9,7 +9,6 @@ $(() => {
     $.post('/api/login', serializedData)
 
   })
-
 })
 
 const createMenuItem = (menuItem) => {
@@ -45,7 +44,7 @@ const createMenuItem = (menuItem) => {
   return $menuItem;
 };
 
-const renderMenus = function(menus_data) {
+const renderMenus = function (menus_data) {
   for (const menuItem of menus_data) {
     const $menuItem = createMenuItem(menuItem);
     $(".menu-container").append($menuItem);
