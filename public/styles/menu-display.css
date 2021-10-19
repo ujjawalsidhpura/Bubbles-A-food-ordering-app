@@ -1,3 +1,8 @@
+.menu-container-blur{
+  opacity: 0.3;
+  z-index: -1;
+}
+
 .card {
   width: 60%;
   display: flex;

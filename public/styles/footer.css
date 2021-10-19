@@ -1,5 +1,8 @@
 .shopping-cart {
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
   font-size: 48px;
   color: #63cdda;
   bottom: 5rem;
@@ -10,18 +13,21 @@
   text-align: center;
   visibility: hidden;
   position: relative;
+  margin-bottom: 30px;
+  margin-right: 60px;
   border: none;
   border-radius: 50%;
   background-color: #ffbe76;
   font-weight: 600;
   font-size: 36px;
   color: black;
-
 }
 
 .shopping-cart-counter-add{
   position: relative;
   text-align: center;
+  margin-bottom: 30px;
+  margin-right: 60px;
   font-weight: 600;
   font-size: 36px;
   border: none;
@@ -34,6 +40,8 @@
 .shopping-cart-counter-drop{
   position: relative;
   text-align: center;
+  margin-bottom: 30px;
+  margin-right: 60px;
   font-weight: 600;
   font-size: 36px;
   border: none;
@@ -74,9 +82,14 @@
 }
 
 .total-price{
+  margin-left: 0rem;
   visibility: hidden;
   color: black;
   font-size: 24px;
   display: flex;
   flex-direction: row;
+}
+
+.place-order {
+  margin-top: 20px;
 }
