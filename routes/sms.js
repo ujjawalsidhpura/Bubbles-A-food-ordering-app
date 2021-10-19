@@ -9,7 +9,7 @@ const sendSMS = function () {
     .create({
       body: `An order has been placed for matcha tea.Reply yes for an update`,
       from: '+13433125653', // Twilio num for Restaurant
-      to: '+15197817563'
+      to: '+12048089972'
     })
     .then(message => console.log('Message ID', message.sid));
 }
