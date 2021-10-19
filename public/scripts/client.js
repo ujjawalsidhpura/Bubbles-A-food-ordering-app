@@ -13,7 +13,7 @@ $(() => {
   $('#order-submit-btn').on('click', function (event) {
     event.preventDefault();
     //INSERT ORDER and DETAILS into DB AND THEN
-    $.post('/api/orders', { order_id: 2, client_number: '' })
+    $.post('/api/orders', { order_id: 3 })
 
   })
 

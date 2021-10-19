@@ -47,19 +47,6 @@ app.use("/api/menus", menusRoutes(db));
 app.use("/api/login", loginRoutes(db));
 app.use("/api/orders", ordersRoutes(db)); /* to be modified later */
 
-// app.post('/sms', (req, res) => {
-//   const twiml = new MessagingResponse();
-
-//   if (req.body.Body == 'yes') {
-//     twiml.message('Goodbye');
-//   } else if (req.body.Body == 'no') {
-//     twiml.message('Goodbye');
-//   }
-
-//   res.writeHead(200, { 'Content-Type': 'text/xml' });
-//   res.end(twiml.toString());
-// }); /* for reply func */
-
 // Note: mount other resources here, using the same pattern above
 
 // Home page

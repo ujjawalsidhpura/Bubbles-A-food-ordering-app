@@ -1,7 +1,7 @@
 INSERT INTO customers (name, phone, email, password, address)
-VALUES ('zsh', 123, 'zsh@gmail.com','zsh','home'),
-        ('ujay', 321, 'ujay@gmail.com','ujay','home'),
-        ('ebuka', 132, 'ebuka@gmail.com','ebuka','home');
+VALUES ('zsh', '+14389210007', 'zsh@gmail.com','zsh','home'),
+        ('ujay', '+18735090139' , 'ujay@gmail.com','ujay','home'),
+        ('ebuka', '+15197817563', 'ebuka@gmail.com','ebuka','home');
 
 INSERT INTO menus (name, description, price, image_url, ingredients, status)
 VALUES ('Mango Bubble Tea', 'It’s just the right amount of creamy, with a fresh green tea base and bright, bold mango flavor. Served with ice for an extra chilled drink on a hot summer day.',

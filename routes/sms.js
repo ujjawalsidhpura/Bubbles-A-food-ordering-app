@@ -6,7 +6,8 @@ const sms = require('twilio')(accountSid, authToken);
 const sendSMS = function (data) {
 
   const message = messageMaker(data);
-
+  const clientNum = data[0].phone;
+  console.log(clientNum)
   sms.messages
     .create({
       body: `${message}`, // Order details
@@ -20,9 +21,9 @@ const sendSMS = function (data) {
 
         sms.messages
           .create({
-            body: `${message}`, // Confirmation with time.
+            body: `Your order will be ready in 15 minutes`, // Confirmation with time.
             from: '+13433125653',
-            to: '+18735090139' // Client Number
+            to: clientNum // Client Number
           })
           .then(message => console.log('Message ID', message.sid))
 

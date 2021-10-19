@@ -8,9 +8,13 @@ module.exports = (db) => {
 
   router.get('/:id', (req, res) => {
 
-    db.query(`SELECT order_id, menu_id,name
+    db.query(`SELECT customers.phone, menus.name
               FROM order_details JOIN menus
               ON order_details.menu_id = menus.id
+              JOIN orders
+              ON order_details.order_id = orders.id
+              JOIN customers
+              ON orders.customer_id = customers.id
               WHERE order_id = $1;`, [req.params.id])
       .then(data => {
         res.json(data.rows);
@@ -26,9 +30,13 @@ module.exports = (db) => {
 
     order_id = req.body.order_id;
 
-    db.query(`SELECT name
+    db.query(`SELECT customers.phone, menus.name
               FROM order_details JOIN menus
               ON order_details.menu_id = menus.id
+              JOIN orders
+              ON order_details.order_id = orders.id
+              JOIN customers
+              ON orders.customer_id = customers.id
               WHERE order_id = $1;`, [order_id])
       .then(data => {
         sendSMS(data.rows);
