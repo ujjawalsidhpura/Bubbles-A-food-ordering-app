@@ -9,12 +9,14 @@ const pool = new Pool({
 
 const menuItems = function() {
   const queryString = `
-    SELECT name description price image_url, ingredients
+    SELECT *
     FROM menus;
   `;
   return pool.query(queryString)
              .then((result) => result.rows)
-             .catch((err) => err);
+             .catch((err) => {
+               console.log(err)
+              });
 };
 
 const addCustomer = function(customer) {
@@ -117,6 +119,34 @@ const getOrderHistories = function(customer_id) {
              .then((result) => result.rows)
              .catch((err) => err);
 }
+
+const getUserWithId = function(id) {
+  return pool
+    .query(
+      `SELECT *
+      FROM customers
+      WHERE customers.id = $1
+      `, [id]
+    )
+    .then((result) => result.rows[0] || null)
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
+
+const getUserWithEmail = function(email) {
+  return pool
+    .query(
+      `SELECT *
+      FROM customers
+      WHERE customers.email = $1
+      `, [email]
+    )
+    .then((result) => result.rows[0] || null)
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
 module.exports = {
   menuItems,
   addCustomer,
@@ -124,5 +154,7 @@ module.exports = {
   addOrderDetail,
   getOrderDetailsByOrderId,
   getOrdersPrice,
-  getOrderHistories
+  getOrderHistories,
+  getUserWithId,
+  getUserWithEmail
 }
