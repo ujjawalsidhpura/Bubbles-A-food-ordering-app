@@ -9,14 +9,6 @@ $(() => {
     $.post('/api/login', serializedData)
 
   })
-
-  $('#order-submit-btn').on('click', function (event) {
-    event.preventDefault();
-    //INSERT ORDER and DETAILS into DB AND THEN
-    $.post('/api/orders', { order_id: 3 })
-
-  })
-
 })
 
 const createMenuItem = (menuItem) => {
