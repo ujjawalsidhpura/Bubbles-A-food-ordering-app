@@ -23,7 +23,20 @@ $(() => {
   const cover = $('.cover');
   const errorMessage = $('.error');
 
-
+  // Open sign up form
+  signUpButton.on('click', function(event) {
+    console.log("Here")
+    if (!loginForm.is(":visible")) {
+      loginForm.addClass('flex');
+      signUpInput.show()
+      loginForm.show();
+      cover.show();
+    } else {
+      loginInput.hide()
+      errorMessage.text('')
+      signUpInput.show()
+    }
+  })
 
   // exit form
   exit.on('click', function(event) {
