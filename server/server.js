@@ -45,7 +45,7 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/menus", menusRoutes(db));
 app.use("/api/login", loginRoutes(db));
-app.use("/api/orders", ordersRoutes()); /* to be modified later */
+app.use("/api/orders", ordersRoutes(db)); /* to be modified later */
 
 app.post('/sms', (req, res) => {
   const twiml = new MessagingResponse();
