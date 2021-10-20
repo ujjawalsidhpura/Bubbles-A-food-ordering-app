@@ -27,3 +27,11 @@ function getMyDetails() {
     url: "/users/me"
   });
 }
+
+function placeOrder(){
+  console.log("order is placed");
+  return $.ajax({
+    method: "POST",
+    url: "/api/orders"
+  })
+}

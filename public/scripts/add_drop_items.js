@@ -1,7 +1,18 @@
+// for (let eachItem of data) {
+//   array.push(eachItem.name)
+// }
+
+// array.forEach(item => {
+//   if (count[item]) {
+//     count[item] += 1
+//     return
+//   }
+//   count[item] = 1
+// })
+
+
 export const add_drop_button_event = function(){
-  let id = 0;
   $("button.add-button").click(function(){
-    id ++;
     const createCartItem = function (cartItem) {
       const $cartItem = `
       <div id = "card-${id}" class="card">
@@ -14,8 +25,6 @@ export const add_drop_button_event = function(){
     }
 
     let this_item = $(this).closest(".card-content").find(".title").text();
-
-    // console.log($("#my-cart").find(".description").text());
 
     const renderCart = function(carts_data) {
       let $cartItem;
