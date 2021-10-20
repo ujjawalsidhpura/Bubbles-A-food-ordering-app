@@ -1,9 +1,6 @@
 const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
-<<<<<<< HEAD
-=======
 const { PoliciesList } = require('twilio/lib/rest/trusthub/v1/policies');
->>>>>>> 107cb89b5e0d8855ebe03c774ac51ee7d66d3bff
 
 const pool = new Pool({
   user: 'labber',
@@ -11,7 +8,6 @@ const pool = new Pool({
   host: 'localhost',
   database: 'midterm'
 });
-<<<<<<< HEAD
 const getCustomers = function () {
   const queryString = `
     SELECT *
@@ -33,29 +29,6 @@ const menuItems = function () {
     .catch((err) => {
       console.log(err)
     });
-=======
-const getCustomers = function () {
-  const queryString = `
-    SELECT *
-    FROM customers;
-  `;
-  return pool.query(queryString)
-    .then((result) => result.rows)
-    .catch((err) => {
-      console.log(err)
-    });
-}
-const menuItems = function () {
-  const queryString = `
-    SELECT *
-    FROM menus;
-  `;
-  return pool.query(queryString)
-    .then((result) => result.rows)
-    .catch((err) => {
-      console.log(err)
-    });
->>>>>>> 107cb89b5e0d8855ebe03c774ac51ee7d66d3bff
 };
 
 const addCustomer = function (customer) {
@@ -63,13 +36,8 @@ const addCustomer = function (customer) {
     INSERT INTO customers (name, phone, email, password, address)
     VALUES ($1, $2, $3, $4, $5);
   `;
-<<<<<<< HEAD
   const { name, phone, email, password, address } = customer;
   const queryParams = [name, phone, email, bcrypt.hashSync(password, 10), address];
-=======
-  const { name, phone, email, password, address } = customer;
-  const queryParams = [name, phone, email, bcrypt.hashSync(password, 10), address];
->>>>>>> 107cb89b5e0d8855ebe03c774ac51ee7d66d3bff
 
   return pool.query(queryString, queryParams)
     .then((result) => result.rows)
