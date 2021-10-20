@@ -1,4 +1,5 @@
 const { Pool } = require('pg');
+const bcrypt = require('bcryptjs');
 
 const pool = new Pool({
   user: 'labber',
@@ -6,15 +7,27 @@ const pool = new Pool({
   host: 'localhost',
   database: 'midterm'
 });
-
+const getCustomers = function() {
+  const queryString = `
+    SELECT *
+    FROM customers;
+  `;
+  return pool.query(queryString)
+             .then((result) => result.rows)
+             .catch((err) => {
+               console.log(err)
+              });
+}
 const menuItems = function() {
   const queryString = `
-    SELECT name description price image_url, ingredients
+    SELECT *
     FROM menus;
   `;
   return pool.query(queryString)
              .then((result) => result.rows)
-             .catch((err) => err);
+             .catch((err) => {
+               console.log(err)
+              });
 };
 
 const addCustomer = function(customer) {
@@ -23,7 +36,7 @@ const addCustomer = function(customer) {
     VALUES ($1, $2, $3, $4, $5);
   `;
   const {name, phone, email, password, address} = customer;
-  const queryParams = [name, phone, email, password, address];
+  const queryParams = [name, phone, email, bcrypt.hashSync(password,10), address];
 
   return pool.query(queryString, queryParams)
              .then((result) => result.rows)
@@ -117,12 +130,43 @@ const getOrderHistories = function(customer_id) {
              .then((result) => result.rows)
              .catch((err) => err);
 }
+
+const getUserWithId = function(id) {
+  return pool
+    .query(
+      `SELECT *
+      FROM customers
+      WHERE customers.id = $1
+      `, [id]
+    )
+    .then((result) => result.rows[0] || null)
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
+
+const getUserWithEmail = function(email) {
+  return pool
+    .query(
+      `SELECT *
+      FROM customers
+      WHERE customers.email = $1
+      `, [email]
+    )
+    .then((result) => result.rows[0] || null)
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
 module.exports = {
+getCustomers,
   menuItems,
   addCustomer,
   addOrder,
   addOrderDetail,
   getOrderDetailsByOrderId,
   getOrdersPrice,
-  getOrderHistories
+  getOrderHistories,
+  getUserWithId,
+  getUserWithEmail
 }
