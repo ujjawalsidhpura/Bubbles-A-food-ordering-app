@@ -40,21 +40,39 @@ module.exports = function (router, database) {
   })
 
   router.post('/orders', (req, res) => {
+    const orderItems = req.body.menu_array
+    const customer_id = req.session.userId;
+    const time = new Date();
+    let order_id;
 
-
-    const order_id = req.body.order_id;
-
-    database.getOrdersByOrderID(order_id)
+    database.addOrder(customer_id, time)
       .then(data => {
+        order_id = data[0].id
+        console.log('menu:', orderItems);
 
-        sendSMS(data);
+        //list of promises that needs to resolve before sms is sent
+        let promiseArray = orderItems.map((item) => {
+          return database.addOrderDetail(order_id, item)
+        })
+
+        Promise.all(promiseArray)
+          .then(() => {
+            console.log(order_id)
+            database.getOrdersByOrderID(order_id)
+              .then(data => {
+                console.log("sms data:", data)
+                sendSMS(data);
+              })
+
+
+          })
+
+        return res.send(orderItems)
+
       })
 
   })
 
-
-
   return router;
-
 
 }

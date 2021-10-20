@@ -18,7 +18,7 @@ VALUES (3, '2021-10-16 10:39:50', FALSE), --- order_id 1
        (1, '2021-10-15 12:12:12', TRUE),  --- order_id 2
        (2, '2021-10-15 16:16:16', TRUE),  --- order_id 3
        (3, '2021-10-13 14:00:00', TRUE);  --- order_id 4
-
+          --- order_id 5
 INSERT INTO order_details (order_id, menu_id)
 VALUES (1, 1),
        (1, 2),
@@ -34,4 +34,6 @@ VALUES (1, 1),
        (4, 3),
        (4, 2),
        (4, 3);
+      --(5, 1);
+      --(5, 2);
 

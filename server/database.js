@@ -44,27 +44,43 @@ const addCustomer = function (customer) {
     .catch((err) => err);
 };
 
-const addOrder = function (order) {
+const addOrder = function (customer_id, order_time) {
   const queryString = `
-    INSERT INTO orders (customer_id, order_time, status)
-    VALUES ($1, $2, $3);
+    INSERT INTO orders (customer_id, order_time)
+    VALUES ($1, $2)
+    RETURNING id;
   `;
 
-  const { customer_id, order_time, status } = order;
-  const queryParams = [customer_id, order_time, status];
+  // const { customer_id, order_time, status } = order;
+  const queryParams = [customer_id, order_time];
 
   return pool.query(queryString, queryParams)
     .then((result) => result.rows)
     .catch((err) => err);
 };
 
-const addOrderDetail = function (order_detail) {
+// const addOrderDetails = function (order_id, menu_array) {
+
+//   const queryString = `
+//     INSERT INTO order_details (order_id, menu_id)
+//     VALUES ($1, $2)
+//   `
+//   let ans;
+//   for (let item of menu_array) {
+//     let queryParams = [order_id, item];
+
+//     ans = pool.query(queryString, queryParams)
+//       .then((result) => result.rows)
+//       .catch((err) => err);
+//     }
+//     return ans;
+// }
+
+const addOrderDetail = function (order_id, menu_id) {
   const queryString = `
     INSERT INTO order_details (order_id, menu_id)
     VALUES ($1, $2)
   `
-
-  const { order_id, menu_id } = order_detail;
   const queryParams = [order_id, menu_id];
 
   return pool.query(queryString, queryParams)
@@ -82,7 +98,7 @@ const getOrderDetailsByOrderId = function (order_id) {
   JOIN menus ON menu_id = menus.id
   JOIN orders ON order_id = orders.id
   JOIN customers ON customer_id = customers.id
-  WHERE orders.id = 1
+  WHERE orders.id = $1
   ) AS orders
   GROUP BY id,customer_name, item;
   `;
@@ -161,16 +177,18 @@ const getUserWithEmail = function (email) {
 }
 
 const getOrdersByOrderID = (order_id) => {
+  console.log("database order_id:", order_id)
   return pool.query(`SELECT customers.phone ,
 customers.name AS client ,
-menus.name
+menus.name, count(menus.name) as quantity
 FROM order_details JOIN menus
 ON order_details.menu_id = menus.id
 JOIN orders
 ON order_details.order_id = orders.id
 JOIN customers
 ON orders.customer_id = customers.id
-WHERE order_id = $1;`, [order_id])
+WHERE order_id = $1
+GROUP BY menus.name, customers.phone, customers.name;`, [order_id])
     .then((result) => result.rows)
     .catch((err) => {
       console.log(err.message);
@@ -188,6 +206,7 @@ module.exports = {
   getOrderHistories,
   getUserWithId,
   getUserWithEmail,
-  getOrdersByOrderID
+  getOrdersByOrderID,
+  // addOrderDetails
 
 }

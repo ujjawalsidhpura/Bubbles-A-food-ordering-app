@@ -1,6 +1,60 @@
+// for (let eachItem of data) {
+//   array.push(eachItem.name)
+// }
+
+// array.forEach(item => {
+//   if (count[item]) {
+//     count[item] += 1
+//     return
+//   }
+//   count[item] = 1
+// })
+
+
 export const add_drop_button_event = function(){
+  const array = [];
+
 
   $("button.add-button").click(function(){
+    const createCartItem = function (cartItem) {
+      const $cartItem = `
+      <div class="card">
+        <span class="description"><b>Description: </b>${cartItem.name} </span>
+        <span class="ingredients"><b>Ingredients: </b>${cartItem.price} </span>
+        <span class = "my-cart-quantity"><b>Quantity: </b>1</span>
+      </div>
+    `
+      return $cartItem
+    }
+
+    let this_item = $(this).closest(".card-content").find(".title").text();
+
+    const renderCart = function(carts_data) {
+      let $cartItem;
+
+      for (const cartItem of carts_data) {
+         if(cartItem.name === this_item){
+            array.push(cartItem.id);
+            $cartItem = createCartItem(cartItem);
+            $("#my-cart").append($cartItem);
+         }
+      }
+      // console.log(array);
+      }
+
+    $.ajax({
+      url: '/api/menus',
+      method: "GET",
+      dataType: "json",
+      success: (menus) => {
+        renderCart(menus);
+      },
+
+      error: (err) => {
+        alert(`there was an error ${err}`);
+      }
+    });
+
     let quantity = $(this).siblings(".quantity").text();
     quantity ++;
     $(this).siblings(".quantity").css("visibility","visible");
@@ -28,6 +82,30 @@ export const add_drop_button_event = function(){
      $(".total-price-value").text(total_price.toFixed(2))
      $(".total-price").css("visibility","visible")
   });
+
+  $('#order-submit-btn').on('click', function (event) {
+    event.preventDefault();
+
+    //INSERT ORDER and customer DETAILS into DB AND THEN-->
+
+
+    placeOrder(array)
+    // .then((user) => {
+    //   console.log(user.JSON)
+    //   // getMyDetails()
+    //   //   .then(json => updateNav(json.user));
+    // })
+    // .fail((err) => {
+    //   console.log('failed because: ', err)
+    //   $('.error').text(err.responseJSON.message)
+    // })
+
+    // getOrder()
+    //         .then()
+    //$.post('/api/orders', { order_id: 3 })
+
+  })
+
 
   $("button.add-button").mousedown(function(){
     $(this).siblings(".quantity").removeClass("quantity").addClass("quantity-add");
