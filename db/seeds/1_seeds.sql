@@ -1,7 +1,7 @@
 INSERT INTO customers (name, phone, email, password, address)
-VALUES ('zsh', 123, 'zsh@gmail.com','$2a$10$KMeI0FFi0yD8c0KjHDjfkumShBcPv2lhXuD8FxwYv8HYbvmfl23Gy','home'),
-        ('ujay', 321, 'ujay@gmail.com','$2a$10$KMeI0FFi0yD8c0KjHDjfkuWHt44u9nwoR4RSGGpaBDGTaPO5rwtS6','home'),
-        ('ebuka', 132, 'ebuka@gmail.com','$2a$10$KMeI0FFi0yD8c0KjHDjfkuqu.BFedjckbgn1V9PTVSMx6DETFs2nG','home');
+VALUES ('zsh', '+14389210007', 'zsh@gmail.com','$2a$10$KMeI0FFi0yD8c0KjHDjfkumShBcPv2lhXuD8FxwYv8HYbvmfl23Gy','home'),
+        ('ujay', '+18735090139', 'ujay@gmail.com','$2a$10$KMeI0FFi0yD8c0KjHDjfkuWHt44u9nwoR4RSGGpaBDGTaPO5rwtS6','home'),
+        ('ebuka', '+15197817563', 'ebuka@gmail.com','$2a$10$KMeI0FFi0yD8c0KjHDjfkuqu.BFedjckbgn1V9PTVSMx6DETFs2nG','home');
 
 INSERT INTO menus (name, description, price, image_url, ingredients, status)
 VALUES ('Classic Milk Bubble Tea', 'This is where the legacy of bubble tea begins.The creamy and rich flavor of this combination makes this drink the most popular flavor among fans.',

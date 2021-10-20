@@ -22,11 +22,11 @@ module.exports = (db) => {
         console.log(data.rows)
         if (!user) {
           console.log("no user");
-          return res.status(404).send({message: 'Email does not exist'})
+          return res.status(404).send({ message: 'Email does not exist' })
         }
         if (!bcrypt.compareSync(password, user.password)) {
           console.log("Incorrect password");
-          return res.status(404).send({message: 'Incorrect password'})
+          return res.status(404).send({ message: 'Incorrect password' })
         }
         req.session.user_id = user.id;
         return res.send("Logged in!");
