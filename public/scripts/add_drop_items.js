@@ -1,6 +1,47 @@
 export const add_drop_button_event = function(){
-
+  let id = 0;
   $("button.add-button").click(function(){
+    id ++;
+    const createCartItem = function (cartItem) {
+      const $cartItem = `
+      <div id = "card-${id}" class="card">
+        <span class="description"><b>Description: </b>${cartItem.name} </span>
+        <span class="ingredients"><b>Ingredients: </b>${cartItem.price} </span>
+        <span class = "my-cart-quantity"><b>Quantity: </b>1</span>
+      </div>
+    `
+      return $cartItem
+    }
+
+    let this_item = $(this).closest(".card-content").find(".title").text();
+
+    // console.log($("#my-cart").find(".description").text());
+
+    const renderCart = function(carts_data) {
+      let $cartItem;
+
+      for (const cartItem of carts_data) {
+        console.log(id);
+         if(cartItem.name === this_item){
+            $cartItem = createCartItem(cartItem);
+            $("#my-cart").append($cartItem);
+         }
+      }
+      }
+
+    $.ajax({
+      url: '/api/menus',
+      method: "GET",
+      dataType: "json",
+      success: (menus) => {
+        renderCart(menus);
+      },
+
+      error: (err) => {
+        alert(`there was an error ${err}`);
+      }
+    });
+
     let quantity = $(this).siblings(".quantity").text();
     quantity ++;
     $(this).siblings(".quantity").css("visibility","visible");
