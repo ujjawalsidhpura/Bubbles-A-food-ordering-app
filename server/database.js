@@ -44,14 +44,13 @@ const addCustomer = function (customer) {
     .catch((err) => err);
 };
 
-const addOrder = function (order) {
+const addOrder = function (customer_id, order_time) {
   const queryString = `
-    INSERT INTO orders (customer_id, order_time, status)
-    VALUES ($1, $2, $3);
+    INSERT INTO orders (customer_id, order_time)
+    VALUES ($1, $2);
   `;
 
-  const { customer_id, order_time, status } = order;
-  const queryParams = [customer_id, order_time, status];
+  const queryParams = [customer_id, order_time];
 
   return pool.query(queryString, queryParams)
     .then((result) => result.rows)

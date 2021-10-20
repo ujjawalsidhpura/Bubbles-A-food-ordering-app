@@ -12,10 +12,11 @@
 
 
 export const add_drop_button_event = function(){
+  const array = [];
   $("button.add-button").click(function(){
     const createCartItem = function (cartItem) {
       const $cartItem = `
-      <div id = "card-${id}" class="card">
+      <div class="card">
         <span class="description"><b>Description: </b>${cartItem.name} </span>
         <span class="ingredients"><b>Ingredients: </b>${cartItem.price} </span>
         <span class = "my-cart-quantity"><b>Quantity: </b>1</span>
@@ -30,12 +31,13 @@ export const add_drop_button_event = function(){
       let $cartItem;
 
       for (const cartItem of carts_data) {
-        console.log(id);
          if(cartItem.name === this_item){
+            array.push(cartItem.id);
             $cartItem = createCartItem(cartItem);
             $("#my-cart").append($cartItem);
          }
       }
+      console.log(array);
       }
 
     $.ajax({

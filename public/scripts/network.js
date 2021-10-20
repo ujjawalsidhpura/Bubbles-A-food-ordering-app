@@ -28,10 +28,21 @@ function getMyDetails() {
   });
 }
 
-function placeOrder(){
+function placeOrder(menu_array){
   console.log("order is placed");
   return $.ajax({
     method: "POST",
-    url: "/api/orders"
+    url: "/api/orders",
+    data: {
+      menu_array
+    }
+  })
+}
+
+function getOrder(){
+  console.log("get order");
+  return $.ajax({
+    method: "GET",
+    url: "/api/orders/:id"
   })
 }

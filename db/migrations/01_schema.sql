@@ -26,7 +26,7 @@ CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
   customer_id INTEGER REFERENCES customers(id) ON DELETE CASCADE,
   order_time TIMESTAMP,
-  status BOOLEAN
+  status BOOLEAN DEFAULT true
 );
 
 CREATE TABLE order_details (
