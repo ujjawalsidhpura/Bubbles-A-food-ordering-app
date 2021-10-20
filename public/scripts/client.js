@@ -3,7 +3,6 @@ $(() => {
 
   $('#submit').on('submit', function (event) {
     event.preventDefault();
-    console.log(this)
     const serializedData = $(this).serialize();
     console.log(serializedData)
     $.post('/api/login', serializedData)

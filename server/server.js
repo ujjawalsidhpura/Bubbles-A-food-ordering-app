@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require('morgan');
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
+
 
 // PG database client/connection setup
 const { Pool } = require('pg');

@@ -7,7 +7,7 @@
 
 const cookieSession = require('cookie-session');
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 router.use(cookieSession({
   name: 'session',
@@ -46,9 +46,7 @@ module.exports = (db) => {
   return router;
 };
 
-const login = (users, email) => {
-  const user = getUserByEmail(users, email)
-}
+
 const getUserByEmail = (userObj, email) => {
   for (let user in userObj) {
     if (userObj[user].email === email) {
