@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS order_details CASCADE;
 CREATE TABLE customers (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  phone INTEGER,
+  phone VARCHAR(12),
   email VARCHAR(255),
   password VARCHAR(255),
   address VARCHAR(255)

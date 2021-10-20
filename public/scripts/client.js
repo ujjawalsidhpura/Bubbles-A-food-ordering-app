@@ -3,33 +3,14 @@
 // $(document).ready(function() {
 //   // const {  add_drop_button_event } = require('./add_drop_items');
 
-//   loadMenus();
+// $('#submit').on('submit', function (event) {
+//   event.preventDefault();
+//   const serializedData = $(this).serialize();
+//   console.log(serializedData)
+//   $.post('/api/login', serializedData)
 
-// //   // DOM Variables
-// //   const loginButton = $('.login-button');
-// //   const signUpButton = $('.sign-up-button');
-// //   const logOutButton = $('.logout-button');
-// //   const loginInput = $('#submit')
-// //   const signUpInput = $('#register')
-// //   const loginForm = $('.login-form');
-// //   const exit = $('#exit');
-// //   const cover = $('.cover');
-// //   const errorMessage = $('.error');
+// })
 
-// //   // // Submit login form
-// //   // loginInput.on('submit', function(event) {
-// //   //   event.preventDefault();
-// //   //   const serializedData = $(this).serialize();
-// //   //   console.log(serializedData)
-// //   //   $.post('/api/login', serializedData)
-// //   //   .done((data) => {
-// //   //     window.location.reload(true)
-// //   //   })
-// //   //   .fail((err) => {
-// //   //     console.log('failed because: ', err)
-// //   //     $('.error').text(err.responseJSON.message)
-// //   //   })
-// //   // })
 
 // //   // // Submit sign up form
 // //   // signUpInput.on('submit', function(event) {
@@ -46,6 +27,12 @@
 // //   //     })
 // //   // })
 
+// const renderMenus = function (menus_data) {
+//   for (const menuItem of menus_data) {
+//     const $menuItem = createMenuItem(menuItem);
+//     $(".menu-container").append($menuItem);
+//   }
+// }
 
 // const createMenuItem = (menuItem) => {
 //   const menuCard = `

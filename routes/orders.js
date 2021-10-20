@@ -1,25 +1,54 @@
-/*
- * All routes for Menus are defined here
- * Since this file is loaded in server.js into api/orders,
- *   these routes are mounted onto /orders
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
+// const express = require('express');
+// const dbParams = require('../lib/db');
+// const sendSMS = require('./sms');
+// const router = express.Router();
 
-const express = require('express');
-const router  = express.Router();
 
-module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM orders;`)
-      .then(data => {
-        const orders = data.rows;
-        res.json(orders);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
-  return router;
-};
+// module.exports = (db) => {
+
+//   router.get('/:id', (req, res) => {
+
+//     db.query(`SELECT customers.phone ,
+//               customers.name AS client ,
+//               menus.name
+//               FROM order_details JOIN menus
+//               ON order_details.menu_id = menus.id
+//               JOIN orders
+//               ON order_details.order_id = orders.id
+//               JOIN customers
+//               ON orders.customer_id = customers.id
+//               WHERE order_id = $1;`, [req.params.id])
+//       .then(data => {
+//         res.json(data.rows);
+//       })
+//       .catch(err => {
+//         res
+//           .status(500)
+//           .json({ error: err.message });
+//       });
+//   })
+
+//   router.post('/', (req, res) => {
+
+//     order_id = req.body.order_id;
+
+//     db.query(`SELECT customers.phone,
+//               customers.name AS client,
+//               menus.name
+//               FROM order_details JOIN menus
+//               ON order_details.menu_id = menus.id
+//               JOIN orders
+//               ON order_details.order_id = orders.id
+//               JOIN customers
+//               ON orders.customer_id = customers.id
+//               WHERE order_id = $1;`, [order_id])
+//       .then(data => {
+//         sendSMS(data.rows);
+//       })
+
+//   })
+//   return router;
+// };
+
+
+
