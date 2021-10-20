@@ -1,4 +1,8 @@
-/* nav {
-  background-color: #90EAFF;
-  padding: 1.5em;
+/* .logout-button {
+  display: none;
 } */
+
+.user-name {
+  font-size: 36px;
+  margin-left: 10rem;
+}
