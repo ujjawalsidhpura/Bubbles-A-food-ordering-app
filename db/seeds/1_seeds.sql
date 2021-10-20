@@ -1,5 +1,4 @@
 INSERT INTO customers (name, phone, email, password, address)
-
 VALUES ('zsh', '+14389210007', 'zsh@gmail.com','$2a$10$KMeI0FFi0yD8c0KjHDjfkumShBcPv2lhXuD8FxwYv8HYbvmfl23Gy','home'),
         ('ujay', '+18735090139', 'ujay@gmail.com','$2a$10$KMeI0FFi0yD8c0KjHDjfkuWHt44u9nwoR4RSGGpaBDGTaPO5rwtS6','home'),
         ('ebuka', '+15197817563', 'ebuka@gmail.com','$2a$10$KMeI0FFi0yD8c0KjHDjfkuqu.BFedjckbgn1V9PTVSMx6DETFs2nG','home');
