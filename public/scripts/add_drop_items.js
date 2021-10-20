@@ -13,6 +13,8 @@
 
 export const add_drop_button_event = function(){
   const array = [];
+
+
   $("button.add-button").click(function(){
     const createCartItem = function (cartItem) {
       const $cartItem = `
@@ -37,7 +39,7 @@ export const add_drop_button_event = function(){
             $("#my-cart").append($cartItem);
          }
       }
-      console.log(array);
+      // console.log(array);
       }
 
     $.ajax({
@@ -80,6 +82,30 @@ export const add_drop_button_event = function(){
      $(".total-price-value").text(total_price.toFixed(2))
      $(".total-price").css("visibility","visible")
   });
+
+  $('#order-submit-btn').on('click', function (event) {
+    event.preventDefault();
+
+    //INSERT ORDER and customer DETAILS into DB AND THEN-->
+
+
+    placeOrder(array)
+    // .then((user) => {
+    //   console.log(user.JSON)
+    //   // getMyDetails()
+    //   //   .then(json => updateNav(json.user));
+    // })
+    // .fail((err) => {
+    //   console.log('failed because: ', err)
+    //   $('.error').text(err.responseJSON.message)
+    // })
+
+    // getOrder()
+    //         .then()
+    //$.post('/api/orders', { order_id: 3 })
+
+  })
+
 
   $("button.add-button").mousedown(function(){
     $(this).siblings(".quantity").removeClass("quantity").addClass("quantity-add");

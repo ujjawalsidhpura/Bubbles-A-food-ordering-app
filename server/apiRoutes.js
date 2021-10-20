@@ -40,21 +40,68 @@ module.exports = function (router, database) {
   })
 
   router.post('/orders', (req, res) => {
-    console.log(req.body);
+    const orderItems = req.body.menu_array
     const customer_id = req.session.userId;
-
     const time = new Date();
+    let order_id;
 
-    database.addOrder(customer_id, time)
-              .then(data => {
-                console.log(data);
-                return res.send(data);
-              })
-              .catch(err => {
-                res
-                  .status(500)
-                  .json({ error: err.message });
-              });
+    const test = async() => {
+      await Promise.resolve(
+        database.addOrder(customer_id, time)
+                .then(data => {
+                  order_id = data[0].id
+                  // console.log('menu:', orderItems);
+
+                  for (let item of orderItems) {
+                    database.addOrderDetail(order_id, item)
+                  }
+
+                  // return res.json({ order_id: order_id });
+                  return res.send(orderItems)
+
+                })
+      )
+    }
+    test()
+    .then(() =>{
+      console.log(order_id)
+      database.getOrdersByOrderID(order_id)
+        .then(data => {
+          console.log("sms data:", data)
+          // sendSMS(data);
+        })
+      // console.log(orders)
+
+    })
+    // database.addOrder(customer_id, time)
+    //           .then(data => {
+    //             order_id = data[0].id
+    //             // console.log('menu:', orderItems);
+
+    //             for (let item of orderItems) {
+    //               database.addOrderDetail(order_id, item)
+    //             }
+
+    //             // return res.json({ order_id: order_id });
+    //             return res.send(orderItems)
+
+    //           })
+              // .then(() =>{
+              //   console.log(order_id)
+              //   database.getOrdersByOrderID(order_id)
+              //     .then((data) => {
+              //       console.log("sms data:", data)
+              //       // sendSMS(data);
+              //     })
+              //   // console.log(orders)
+
+              // })
+              // .catch(err => {
+              //   res
+              //     .status(500)
+              //     .json({ error: err.message });
+              // })
+
 
 
 
