@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const { getUserWithEmail } = require('./database');
+// const { getUserWithEmail } = require('./database');
 
 module.exports = function(router, database) {
   // Create a new user

@@ -1,3 +1,8 @@
+.menu-container-blur{
+  opacity: 0.3;
+  z-index: -1;
+}
+
 .card {
   width: 60%;
   display: flex;
@@ -37,5 +42,49 @@
   display: flex;
 }
 .increment-order {
-  margin-left: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  align-items: center;
 }
+
+.quantity {
+  visibility: hidden;
+  font-weight: 600;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-size: 15px;
+  color: black;
+}
+
+.quantity-add {
+  font-weight: 600;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-size: 15px;
+  color: #63cdda;
+}
+
+.quantity-drop {
+  font-weight: 600;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-size: 15px;
+  color: #cf6a87;
+}
+
+.quantity-hover {
+  font-weight: 600;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-size: 15px;
+  color: #f5cd79;
+}
+
+.drop-button {
+  visibility: hidden;
+}
+
+
+

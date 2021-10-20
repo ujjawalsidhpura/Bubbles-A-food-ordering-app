@@ -1,3 +1,5 @@
+import {add_drop_button_event} from '../add_drop_items.js'
+
 $(() => {
 
   loadMenus();
@@ -7,9 +9,9 @@ $(() => {
 const createMenuItem = (menuItem) => {
   const $menuItem = `
   <div class="card">
-    <div class="card-image">
+    <li class="card-image">
       <img src=${menuItem.image_url} alt="Placeholder image">
-    </div>
+    </li>
     <div class="card-content">
       <div class="media">
         <p class="title is-3">${menuItem.name}</p>
@@ -22,16 +24,15 @@ const createMenuItem = (menuItem) => {
           <div class="cost">
             <p><b>Price: </b>${menuItem.price}</p>
           </div>
-          <div class="order-value">
-            <div>quantity: 0</div>
             <div class="increment-order">
-              <button class="button is-success is-light">+</button>
-              <button class="button is-danger is-light">-</button>
+            <button class="button is-danger is-light drop-button" id = "drop-button">-</button>
+            <output class = "quantity">0</output>
+            <button class="button is-success is-light add-button" id = "add-button">+</button>
             </div>
-          </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
   `
   return $menuItem;
@@ -42,6 +43,7 @@ const renderMenus = function(menus_data) {
     const $menuItem = createMenuItem(menuItem);
     $(".menu-container").append($menuItem);
   }
+  add_drop_button_event();
 }
 
 const loadMenus = () => {
