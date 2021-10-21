@@ -1,4 +1,5 @@
- $(() => {
+// Show the login form when click the "Log In" Button
+$(() => {
   const $logInForm = $(`
   <form action="/users/login" method="POST" id="submit">
     <input name="email" class="input" type="email" id="email" placeholder="Email Address" required>

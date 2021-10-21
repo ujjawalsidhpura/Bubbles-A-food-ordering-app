@@ -1,3 +1,4 @@
+// Render all the menus to the home page, similar to tweeter app
 import {add_drop_button_event} from '../add_drop_items.js'
 
 $(() => {
@@ -7,6 +8,7 @@ $(() => {
 })
 
 const createMenuItem = (menuItem) => {
+  // Create html for each json in the menus table of the database
   const $menuItem = `
   <div class="card">
     <li class="card-image">
@@ -39,6 +41,7 @@ const createMenuItem = (menuItem) => {
 };
 
 const renderMenus = function(menus_data) {
+  // Loop through the menus table of the databse and then call createMenuItem for each menuItem
   for (const menuItem of menus_data) {
     const $menuItem = createMenuItem(menuItem);
     $(".menu-container").append($menuItem);
@@ -47,6 +50,7 @@ const renderMenus = function(menus_data) {
 }
 
 const loadMenus = () => {
+  // call the renderMenus function by ajax get /api/menus which loads our menus table
   $.ajax({
     url: '/api/menus',
     method: "GET",
