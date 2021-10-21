@@ -1,4 +1,4 @@
-// Import Twilio auth credentials from .env  //
+// Import Twilio auth credentials from .env  / /
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const sms = require('twilio')(accountSid, authToken);
@@ -41,6 +41,7 @@ const sendSMS = function (data) {
 
   const twilioNum = '+13433125653';
   const restaurantOwnerNum = '+12048089972';
+  // '+15197817563' //
   const messageToOwner = orderMessageMaker(data);
   const messageToClient = clientMessageMaker(data);
   const clientNum = data[0].phone;
@@ -49,9 +50,11 @@ const sendSMS = function (data) {
   // 1. Send Message to Owner giving order details and client name
   sms.messages
     .create({
+
       body: messageToOwner,
       from: twilioNum,
       to: restaurantOwnerNum
+
     })
     .then(message => console.log('Message ID', message.sid))
     .then(() => {
@@ -63,10 +66,11 @@ const sendSMS = function (data) {
             body: messageToClient,
             from: twilioNum,
             to: clientNum
+
           })
           .then(message => console.log('Message ID', message.sid))
 
-      }, 2000); //Change this timeout to 5 seconds later
+      }, 5000);
 
     })
 }
@@ -74,26 +78,3 @@ const sendSMS = function (data) {
 module.exports = sendSMS;
 
 
-
-
-// let array = []
-    // let result = []
-    // let count = {}
-    // for (let eachItem of data) {
-    //   array.push(eachItem.name)
-    // }
-    // array.forEach(item => {
-    //   if (count[item]) {
-    //     count[item] += 1
-    //     return
-    //   }
-    //   count[item] = 1
-    // })
-    // for (let prop in count) {
-    //   if (count[prop] >= 2) {
-    //     result.push(prop)
-    //   }
-    // }
-    // for (let item in count) {
-    //   message += `${count[item]} ${item} `
-    // }
