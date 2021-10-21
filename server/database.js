@@ -118,7 +118,7 @@ const getOrdersPrice = function (order_id) {
   JOIN menus ON menu_id = menus.id
   JOIN orders ON order_id = orders.id
   JOIN customers ON customer_id = customers.id
-  WHERE orders.id = order_id
+  WHERE orders.id = $1
   GROUP BY customers.id;
   `;
 

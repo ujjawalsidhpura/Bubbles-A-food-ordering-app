@@ -27,6 +27,7 @@ const sendSMS = function (data) {
   const messageToOwner = orderMessageMaker(data);
   const messageToClient = clientMessageMaker(data);
   const clientNum = data[0].phone;
+  console.log("data:",data);
   console.log("client number:", clientNum)
 
   // 1. Send Message to Owner giving order details and client name
@@ -49,7 +50,7 @@ const sendSMS = function (data) {
           })
           .then(message => console.log('Message ID', message.sid))
 
-      }, 2000); //Change this timeout to 5 seconds later
+      }, 5000); //Change this timeout to 5 seconds later
 
     })
 }
