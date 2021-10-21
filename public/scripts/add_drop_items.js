@@ -1,26 +1,6 @@
-// for (let eachItem of data) {
-//   array.push(eachItem.name)
-// }
-
-// array.forEach(item => {
-//   if (count[item]) {
-//     count[item] += 1
-//     return
-//   }
-//   count[item] = 1
-// })
-
-
 export const add_drop_button_event = function(){
 
-  // {
-  //   classic bubble tea: {
-  //     price:
-  //     quanity:
-  //     image:
-  //   },
-  // }
-  const array = [];
+  let array = [];
   const object = {};
 
   $("button.add-button").click(function(){
@@ -61,6 +41,7 @@ export const add_drop_button_event = function(){
       for (const cartItem of carts_data) {
          if(cartItem.name === this_item) {
             array.push(cartItem.id);
+            console.log(array);
             const quantity = object[this_item].quantity;
             object[this_item] = {name: cartItem.name, image_url: cartItem.image_url,
               price : cartItem.price, quantity};
@@ -68,7 +49,7 @@ export const add_drop_button_event = function(){
             //$("#my-cart").append($cartItem);
          }
       }
-      console.log(object);
+      // console.log(object);
       createCartItem(object);
       // console.log(array);
       }
@@ -186,6 +167,13 @@ export const add_drop_button_event = function(){
     const renderCart = function(carts_data) {
       $("#my-cart").empty();
       for (const cartItem of carts_data) {
+        if(cartItem.name === this_item){
+          let index = array.indexOf(cartItem.id)
+          if (index > -1) {
+            array.splice(index, 1);
+          }
+        }
+
          if(cartItem.name === this_item && object[this_item]) {
             const quantity = object[this_item].quantity;
             object[this_item] = {name: cartItem.name, image_url: cartItem.image_url,
