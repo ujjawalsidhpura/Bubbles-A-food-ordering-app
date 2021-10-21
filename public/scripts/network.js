@@ -17,7 +17,7 @@ function signUp(data) {
   });
 }
 
-function logOut(){
+function logOut() {
   return $.ajax({
     method: "POST",
     url: "/users/logout"
@@ -31,7 +31,7 @@ function getMyDetails() {
   });
 }
 
-function placeOrder(menu_array){
+function placeOrder(menu_array) {
   console.log("order is placed");
   return $.ajax({
     method: "POST",
@@ -42,10 +42,11 @@ function placeOrder(menu_array){
   })
 }
 
-function getOrder(){
+function getOrder() {
   console.log("get order");
   return $.ajax({
     method: "GET",
     url: "/api/orders/:id"
   })
 }
+
