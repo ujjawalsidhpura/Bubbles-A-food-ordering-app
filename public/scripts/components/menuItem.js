@@ -12,7 +12,7 @@ const createMenuItem = (menuItem) => {
   const $menuItem = `
   <div class="card">
     <li class="card-image">
-      <img src=${menuItem.image_url} alt="Placeholder image">
+      <img style = "max-width: 200px" src=${menuItem.image_url} alt="Placeholder image">
     </li>
     <div class="card-content">
       <div class="media">
