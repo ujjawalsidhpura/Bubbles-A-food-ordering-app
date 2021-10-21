@@ -19,7 +19,24 @@ const sendSMS = function (data) {
 
   const clientMessageMaker = function (data) {
     const clientName = data[0].client;
-    return `Hello ${clientName}, Thank you for placing an order at Bubbles. Your order should be ready in approximately 15 minutes.`
+    let quantity = 0;
+    let time;
+
+    for (let item of data) {
+      quantity += parseInt(item.quantity)
+    }
+
+    if (quantity <= 5) {
+      time = 10;
+    } else if (quantity > 5 && quantity <= 10) {
+      time = 20;
+    } else if (quantity > 10 && quantity <= 15) {
+      time = 25;
+    } else {
+      time = 30;
+    }
+
+    return `Hello ${clientName}, Thank you for placing an order at Bubbles. Your order should be ready in approximately ${time} minutes.`
   }
 
   const twilioNum = '+13433125653';
