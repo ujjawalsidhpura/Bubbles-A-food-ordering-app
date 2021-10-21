@@ -27,7 +27,6 @@ const sendSMS = function (data) {
   const messageToOwner = orderMessageMaker(data);
   const messageToClient = clientMessageMaker(data);
   const clientNum = data[0].phone;
-  console.log("data:",data);
   console.log("client number:", clientNum)
 
   // 1. Send Message to Owner giving order details and client name
