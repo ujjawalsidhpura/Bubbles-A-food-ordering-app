@@ -251,23 +251,17 @@ $(() => {
         </div>
       </nav>
       `
-      // $('body .navbar').remove();
+
       $('body').append($nav)
       buttonEventControls();
     }
   }
-  // $('body').append($nav1)
 
-  // window.nav.update = updateNav;
 
   getMyDetails()
     .then(function( json ) {
     console.log(json)
     updateNav(json.user);
   });
-
-  //  $('body').append($nav1)
-
-
 
 })

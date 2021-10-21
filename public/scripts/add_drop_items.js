@@ -41,17 +41,12 @@ export const add_drop_button_event = function(){
       for (const cartItem of carts_data) {
          if(cartItem.name === this_item) {
             array.push(cartItem.id);
-            console.log(array);
             const quantity = object[this_item].quantity;
             object[this_item] = {name: cartItem.name, image_url: cartItem.image_url,
               price : cartItem.price, quantity};
-            //$cartItem = createCartItem(cartItem);
-            //$("#my-cart").append($cartItem);
          }
       }
-      // console.log(object);
       createCartItem(object);
-      // console.log(array);
       }
 
     $.ajax({
@@ -97,25 +92,7 @@ export const add_drop_button_event = function(){
 
   $('#order-submit-btn').on('click', function (event) {
     event.preventDefault();
-
-    //INSERT ORDER and customer DETAILS into DB AND THEN-->
-
-
     placeOrder(array)
-    // .then((user) => {
-    //   console.log(user.JSON)
-    //   // getMyDetails()
-    //   //   .then(json => updateNav(json.user));
-    // })
-    // .fail((err) => {
-    //   console.log('failed because: ', err)
-    //   $('.error').text(err.responseJSON.message)
-    // })
-
-    // getOrder()
-    //         .then()
-    //$.post('/api/orders', { order_id: 3 })
-
   })
 
 
@@ -157,12 +134,6 @@ export const add_drop_button_event = function(){
         delete object[this_item];
       }
     }
-    // else {
-    //  object[this_item] = {
-    //    quantity: 1
-    //  };
-    // }
-
 
     const renderCart = function(carts_data) {
       $("#my-cart").empty();
@@ -180,9 +151,7 @@ export const add_drop_button_event = function(){
             price : cartItem.price, quantity};
          }
       }
-      console.log(object);
       createCartItem(object);
-      // console.log(array);
       }
 
     $.ajax({
