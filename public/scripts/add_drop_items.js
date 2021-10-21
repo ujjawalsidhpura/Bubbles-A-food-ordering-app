@@ -20,6 +20,7 @@ export const add_drop_button_event = function(){
   //     image:
   //   },
   // }
+  const array = [];
   const object = {};
 
   $("button.add-button").click(function(){
@@ -59,6 +60,7 @@ export const add_drop_button_event = function(){
       $("#my-cart").empty();
       for (const cartItem of carts_data) {
          if(cartItem.name === this_item) {
+            array.push(cartItem.id);
             const quantity = object[this_item].quantity;
             object[this_item] = {name: cartItem.name, image_url: cartItem.image_url,
               price : cartItem.price, quantity};
