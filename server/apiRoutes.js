@@ -45,10 +45,15 @@ module.exports = function (router, database) {
     const time = new Date();
     let order_id;
 
+    /* Order of Events that happen on 'place order'*/
+    // 1. Add new entry in 'orders' table using customer_id. This shall give a uniqure order_id (which is PK of orders)
+    // 2. Then inject order_id-menu_id key:value pairs in order_details table.
+    // 3. Since all funcs are async, final func will wait for step 2 to finish all promise and then it will execute
+    // 4. It will query out the recently placed order gtom db using order_id and send out sms
+
     database.addOrder(customer_id, time)
       .then(data => {
         order_id = data[0].id
-        console.log('menu:', orderItems);
 
         //list of promises that needs to resolve before sms is sent
         let promiseArray = orderItems.map((item) => {
@@ -57,14 +62,14 @@ module.exports = function (router, database) {
 
         Promise.all(promiseArray)
           .then(() => {
+
             console.log(order_id)
             database.getOrdersByOrderID(order_id)
               .then(data => {
                 console.log("sms data:", data)
                 sendSMS(data);
+
               })
-
-
           })
 
         return res.send(orderItems)
