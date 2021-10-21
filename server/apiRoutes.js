@@ -64,7 +64,7 @@ module.exports = function (router, database) {
           .then(() => {
 
             console.log(order_id)
-            database.getOrdersByOrderID(order_id)
+            database.getOrderDetailsByOrderId(order_id)
               .then(data => {
                 console.log("sms data:", data)
                 sendSMS(data);
@@ -78,18 +78,19 @@ module.exports = function (router, database) {
 
   })
 
-  // router.get("/order-history", (req, res) => {
-  //   const customer_id = req.session.userId;
-  //   if (customer_id) {
-  //     database.getOrderHistories(customer_id)
-  //             .then(data => {
-  //               console.log("order-history:", data);
-  //             })
-  //             .catch(err => {
-  //               console.log(err);
-  //             });
-  //   }
-  // })
+  router.get("/order-history", (req, res) => {
+    const customer_id = req.session.userId;
+    if (customer_id) {
+      database.getOrderHistories(customer_id)
+              .then(data => {
+                console.log("order-history:", data);
+                return res.send(data);
+              })
+              .catch(err => {
+                console.log(err);
+              });
+    }
+  })
 
   return router;
 

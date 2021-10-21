@@ -118,7 +118,7 @@ const getOrdersPrice = function (order_id) {
   JOIN menus ON menu_id = menus.id
   JOIN orders ON order_id = orders.id
   JOIN customers ON customer_id = customers.id
-  WHERE orders.id = $1
+  WHERE orders.id = order_id
   GROUP BY customers.id;
   `;
 
@@ -132,13 +132,14 @@ const getOrdersPrice = function (order_id) {
 // This is used to show customers their order history
 const getOrderHistories = function (customer_id) {
   const queryString = `
-  SELECT customers.id, customers.name AS customer_name,  SUM(menus.price) AS total_price
+  SELECT customers.id, customers.name AS customer_name,  orders.id AS order_id, SUM(menus.price) AS total_price,  orders.order_time
   FROM order_details
   JOIN menus ON menu_id = menus.id
   JOIN orders ON order_id = orders.id
   JOIN customers ON customer_id = customers.id
-  WHERE customer_id = 3
-  GROUP BY orders.id, customers.id;
+  WHERE customer_id = $1
+  GROUP BY orders.id, customers.id
+  Order BY orders.id;
   `;
 
   const queryParams = [customer_id];

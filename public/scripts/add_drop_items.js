@@ -25,6 +25,7 @@ export const add_drop_button_event = function(){
       $("#my-cart-exit").click(function(){
         $(".cover").hide();
         $("#my-cart").removeClass("my-cart-flex").addClass("my-cart");
+        $("#menu-container").addClass("menu-container").removeClass("menu-container-hide")
       })
 
       let cart_total_price = 0;
@@ -158,6 +159,7 @@ export const add_drop_button_event = function(){
       $("#my-cart-exit").click(function(){
         $(".cover").hide();
         $("#my-cart").removeClass("my-cart-flex").addClass("my-cart");
+        $("#menu-container").addClass("menu-container").removeClass("menu-container-hide")
       })
       let cart_total_price = 0;
       // render the html for each object in the object,
