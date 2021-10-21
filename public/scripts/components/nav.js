@@ -59,7 +59,9 @@ $(() => {
         .then((json) => {
           clearRegisterForm();
           getMyDetails()
-            .then(json => updateNav(json.user));
+            .then(json => {
+              updateNav(json.user)
+            });
         })
         .fail((err) => {
           console.log('failed because: ', err)
@@ -98,7 +100,9 @@ $(() => {
         .then(() => {
           clearLoginForm();
           getMyDetails()
-            .then(json => updateNav(json.user));
+            .then(json => {
+              updateNav(json.user)
+            });
         })
         .fail((err) => {
                 console.log('failed because: ', err)
@@ -110,10 +114,13 @@ $(() => {
     logOutButton.on("click", () => {
       signUpInput.hide();
       loginInput.hide();
+      errorMessage.text('')
       logOut()
       .then(() => {
         getMyDetails()
-          .then(json => updateNav(json.user));
+          .then(json => {
+            updateNav(json.user)
+          });
       })
     })
 
@@ -122,17 +129,19 @@ $(() => {
       $(".navbar-burger").toggleClass("is-active");
       $(".navbar-menu").toggleClass("is-active");
     });
-    }
+  }
 
   let $nav;
 
   const updateNav = function(user){
     if (!user) {
       // The appearance of nav bar when user is not logged in
-      $nav = `<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+      $('.navbar').empty()
+      $nav = `
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        <a class="navbar-item" href=#>
+          <img src="../images/image.jpeg" width="30" height="28">
+          <p>Bubbles</p>
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -188,19 +197,19 @@ $(() => {
           </div>
         </div>
       </div>
-    </nav>
     `
-      $('body').append($($nav));
+      $('.navbar').append($($nav));
 
       // enable the event handlers when a new nav bar is appended
       buttonEventControls();
     } else {
       // The appearance of nav bar when user is logged in
+      $('.navbar').empty()
       $nav = `
-      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="https://bulma.io">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+          <a class="navbar-item" href="#">
+          <img src="../images/image.jpeg" width="30" height="28">
+          <p>Bubbles</p>
           </a>
 
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -242,10 +251,10 @@ $(() => {
               </div>
             </div>
           </div>
+          <div class="navbar-end">
           <div class = "user-name">
             <p>${user.name}🤞</p>
           </div>
-          <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
                 <a class="button is-danger logout-button is-light">
@@ -255,10 +264,9 @@ $(() => {
             </div>
           </div>
         </div>
-      </nav>
       `
 
-      $('body').append($nav)
+      $('.navbar').append($nav)
 
       // enable the event handlers when a new nav bar is appended
       buttonEventControls();
@@ -268,7 +276,9 @@ $(() => {
 
   getMyDetails()
     .then(function( json ) {
+
     updateNav(json.user);
+
   });
 
 })
