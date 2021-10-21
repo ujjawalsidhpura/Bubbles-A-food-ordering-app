@@ -90,15 +90,7 @@ export const add_drop_button_event = function(){
 
 
     placeOrder(array)
-    // .then((user) => {
-    //   console.log(user.JSON)
-    //   // getMyDetails()
-    //   //   .then(json => updateNav(json.user));
-    // })
-    // .fail((err) => {
-    //   console.log('failed because: ', err)
-    //   $('.error').text(err.responseJSON.message)
-    // })
+
 
     // getOrder()
     //         .then()

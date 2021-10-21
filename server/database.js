@@ -59,22 +59,6 @@ const addOrder = function (customer_id, order_time) {
     .catch((err) => err);
 };
 
-// const addOrderDetails = function (order_id, menu_array) {
-
-//   const queryString = `
-//     INSERT INTO order_details (order_id, menu_id)
-//     VALUES ($1, $2)
-//   `
-//   let ans;
-//   for (let item of menu_array) {
-//     let queryParams = [order_id, item];
-
-//     ans = pool.query(queryString, queryParams)
-//       .then((result) => result.rows)
-//       .catch((err) => err);
-//     }
-//     return ans;
-// }
 
 const addOrderDetail = function (order_id, menu_id) {
   const queryString = `

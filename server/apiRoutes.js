@@ -45,57 +45,57 @@ module.exports = function (router, database) {
     const time = new Date();
     let order_id;
 
-    const test = async() => {
-      await Promise.resolve(
-        database.addOrder(customer_id, time)
-                .then(data => {
-                  order_id = data[0].id
-                  // console.log('menu:', orderItems);
+    // const test = async() => {
+    //   await Promise.resolve(
+    //     database.addOrder(customer_id, time)
+    //             .then(data => {
+    //               order_id = data[0].id
+    //               // console.log('menu:', orderItems);
 
-                  for (let item of orderItems) {
-                    database.addOrderDetail(order_id, item)
-                  }
+    //               for (let item of orderItems) {
+    //                 database.addOrderDetail(order_id, item)
+    //               }
 
-                  // return res.json({ order_id: order_id });
-                  return res.send(orderItems)
+    //               // return res.json({ order_id: order_id });
+    //               return res.send(orderItems)
 
-                })
-      )
-    }
-    test()
-    .then(() =>{
-      console.log(order_id)
-      database.getOrdersByOrderID(order_id)
-        .then(data => {
-          console.log("sms data:", data)
-          // sendSMS(data);
-        })
-      // console.log(orders)
+    //             })
+    //   )
+    // }
+    // test()
+    // .then(() =>{
+    //   console.log(order_id)
+    //   database.getOrdersByOrderID(order_id)
+    //     .then(data => {
+    //       console.log("sms data:", data)
+    //       // sendSMS(data);
+    //     })
+    //   // console.log(orders)
 
-    })
-    // database.addOrder(customer_id, time)
-    //           .then(data => {
-    //             order_id = data[0].id
-    //             // console.log('menu:', orderItems);
+    // })
+    database.addOrder(customer_id, time)
+              .then(data => {
+                order_id = data[0].id
+                // console.log('menu:', orderItems);
 
-    //             for (let item of orderItems) {
-    //               database.addOrderDetail(order_id, item)
-    //             }
+                for (let item of orderItems) {
+                  database.addOrderDetail(order_id, item)
+                }
 
-    //             // return res.json({ order_id: order_id });
-    //             return res.send(orderItems)
+                return res.send({ order_id: order_id });
+                // return res.send(orderItems)
 
-    //           })
-              // .then(() =>{
-              //   console.log(order_id)
-              //   database.getOrdersByOrderID(order_id)
-              //     .then((data) => {
-              //       console.log("sms data:", data)
-              //       // sendSMS(data);
-              //     })
-              //   // console.log(orders)
+              })
+              .then(() =>{
+                console.log(order_id)
+                database.getOrdersByOrderID(order_id)
+                  .then((data) => {
+                    console.log("sms data:", data)
+                    // sendSMS(data);
+                  })
+                // console.log(orders)
 
-              // })
+              })
               // .catch(err => {
               //   res
               //     .status(500)
