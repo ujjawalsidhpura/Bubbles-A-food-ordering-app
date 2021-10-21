@@ -161,39 +161,16 @@ $(() => {
             Documentation
           </a>
 
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary sign-up-button">
+              <strong>Sign up</strong>
             </a>
-
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary sign-up-button">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light login-button">
-                Log in
-              </a>
-            </div>
+            <a class="button is-light login-button">
+              Log in
+            </a>
           </div>
         </div>
       </div>
@@ -229,38 +206,16 @@ $(() => {
               Documentation
             </a>
 
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                More
-              </a>
-
-              <div class="navbar-dropdown">
-                <a class="navbar-item">
-                  About
-                </a>
-                <a class="navbar-item">
-                  Jobs
-                </a>
-                <a class="navbar-item">
-                  Contact
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">
-                  Report an issue
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="navbar-end">
+        </div>
+        <div class="navbar-end">
           <div class = "user-name">
             <p>${user.name}🤞</p>
           </div>
-            <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-danger logout-button is-light">
-                   Logout
-                </a>
-              </div>
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-danger logout-button is-light">
+                 Logout
+              </a>
             </div>
           </div>
         </div>
