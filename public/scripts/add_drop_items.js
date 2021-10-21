@@ -12,33 +12,62 @@
 
 
 export const add_drop_button_event = function(){
-  const array = [];
 
+  // {
+  //   classic bubble tea: {
+  //     price:
+  //     quanity:
+  //     image:
+  //   },
+  // }
+  const object = {};
 
   $("button.add-button").click(function(){
-    const createCartItem = function (cartItem) {
-      const $cartItem = `
-      <div class="card">
-        <span class="description"><b>Description: </b>${cartItem.name} </span>
-        <span class="ingredients"><b>Ingredients: </b>${cartItem.price} </span>
-        <span class = "my-cart-quantity"><b>Quantity: </b>1</span>
-      </div>
-    `
-      return $cartItem
+
+
+    const createCartItem = function (object) {
+      $("#my-cart").append(`<a class="button is-danger is-light" id="my-cart-exit">&times;</a>`);
+      $("#my-cart-exit").click(function(){
+        $(".cover").hide();
+        $("#my-cart").removeClass("my-cart-flex").addClass("my-cart");
+      })
+      for (const eachObject in object) {
+        const $cartItem = `
+        <div class="card">
+          <span class="cart-image"> <img style = "max-width: 100px" src=${object[eachObject].image_url}> </span>
+          <span class="description"><b>Description: </b>${object[eachObject].name} </span>
+          <span class="cart-price"><b>Price: </b>${object[eachObject].price} </span>
+          <span class = "my-cart-quantity"><b>Quantity: </b>${object[eachObject].quantity}</span>
+        </div>
+      `
+        $("#my-cart").append($cartItem);
+      }
     }
 
     let this_item = $(this).closest(".card-content").find(".title").text();
 
-    const renderCart = function(carts_data) {
-      let $cartItem;
+    if (object[this_item]){
+      object[this_item].quantity += 1;
+    } else {
+     object[this_item] = {
+       quantity: 1
+     };
+    }
 
+
+    const renderCart = function(carts_data) {
+      $("#my-cart").empty();
       for (const cartItem of carts_data) {
-         if(cartItem.name === this_item){
-            array.push(cartItem.id);
-            $cartItem = createCartItem(cartItem);
-            $("#my-cart").append($cartItem);
+         if(cartItem.name === this_item) {
+            const quantity = object[this_item].quantity;
+            object[this_item] = {name: cartItem.name, image_url: cartItem.image_url,
+              price : cartItem.price, quantity};
+            //$cartItem = createCartItem(cartItem);
+            //$("#my-cart").append($cartItem);
          }
       }
+      console.log(object);
+      createCartItem(object);
       // console.log(array);
       }
 
@@ -118,6 +147,67 @@ export const add_drop_button_event = function(){
   })
 
   $("button.drop-button").click(function(){
+    const createCartItem = function (object) {
+      $("#my-cart").append(`<a class="button is-danger is-light" id="my-cart-exit">&times;</a>`);
+      $("#my-cart-exit").click(function(){
+        $(".cover").hide();
+        $("#my-cart").removeClass("my-cart-flex").addClass("my-cart");
+      })
+      for (const eachObject in object) {
+        const $cartItem = `
+        <div class="card">
+          <span class="cart-image"> <img style = "max-width: 100px" src=${object[eachObject].image_url}> </span>
+          <span class="description"><b>Description: </b>${object[eachObject].name} </span>
+          <span class="cart-price"><b>Price: </b>${object[eachObject].price} </span>
+          <span class = "my-cart-quantity"><b>Quantity: </b>${object[eachObject].quantity}</span>
+        </div>
+      `
+        $("#my-cart").append($cartItem);
+      }
+    }
+
+    let this_item = $(this).closest(".card-content").find(".title").text();
+
+    if (object[this_item]){
+      object[this_item].quantity -= 1;
+      if (object[this_item].quantity === 0) {
+        delete object[this_item];
+      }
+    }
+    // else {
+    //  object[this_item] = {
+    //    quantity: 1
+    //  };
+    // }
+
+
+    const renderCart = function(carts_data) {
+      $("#my-cart").empty();
+      for (const cartItem of carts_data) {
+         if(cartItem.name === this_item && object[this_item]) {
+            const quantity = object[this_item].quantity;
+            object[this_item] = {name: cartItem.name, image_url: cartItem.image_url,
+            price : cartItem.price, quantity};
+         }
+      }
+      console.log(object);
+      createCartItem(object);
+      // console.log(array);
+      }
+
+    $.ajax({
+      url: '/api/menus',
+      method: "GET",
+      dataType: "json",
+      success: (menus) => {
+        renderCart(menus);
+      },
+
+      error: (err) => {
+        alert(`there was an error ${err}`);
+      }
+    });
+
     let quantity = $(this).siblings(".quantity").text();
     if(quantity > 0){
       quantity --;
