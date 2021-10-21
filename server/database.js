@@ -179,16 +179,16 @@ const getUserWithEmail = function (email) {
 const getOrdersByOrderID = (order_id) => {
   console.log("database order_id:", order_id)
   return pool.query(`SELECT customers.phone ,
-customers.name AS client ,
-menus.name, count(menus.name) as quantity
-FROM order_details JOIN menus
-ON order_details.menu_id = menus.id
-JOIN orders
-ON order_details.order_id = orders.id
-JOIN customers
-ON orders.customer_id = customers.id
-WHERE order_id = $1
-GROUP BY menus.name, customers.phone, customers.name;`, [order_id])
+                     customers.name AS client ,
+                     menus.name, count(menus.name) as quantity
+                     FROM order_details JOIN menus
+                     ON order_details.menu_id = menus.id
+                     JOIN orders
+                     ON order_details.order_id = orders.id
+                     JOIN customers
+                     ON orders.customer_id = customers.id
+                     WHERE order_id = $1
+                     GROUP BY menus.name, customers.phone, customers.name;`, [order_id])
     .then((result) => result.rows)
     .catch((err) => {
       console.log(err.message);
