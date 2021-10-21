@@ -1,6 +1,5 @@
+// This component renders the nav bar of our app, which responsive according to the user state
 $(() => {
-  window.nav = {};
-
   const buttonEventControls = function(){
     // DOM Variables
     const loginButton = $('.login-button');
@@ -13,6 +12,7 @@ $(() => {
     const cover = $('.cover');
     const errorMessage = $('.error');
 
+    // the function to close the sign up form
     const clearRegisterForm = () => {
       $('#name').val('');
       $('#phone').val('');
@@ -67,6 +67,7 @@ $(() => {
         })
     })
 
+    // function to hide the login/register form
     const clearLoginForm = () => {
       $('#email').val('');
       $('#password').val('');
@@ -88,6 +89,7 @@ $(() => {
       }
     })
 
+  //submit the form to login, update the nav bar after login
     loginInput.on('submit', function(event) {
       event.preventDefault();
 
@@ -104,6 +106,7 @@ $(() => {
               })
     })
 
+    // click event handler for logout button which will update nav bar when we log out
     logOutButton.on("click", () => {
       signUpInput.hide();
       loginInput.hide();
@@ -125,6 +128,7 @@ $(() => {
 
   const updateNav = function(user){
     if (!user) {
+      // The appearance of nav bar when user is not logged in
       $nav = `<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="https://bulma.io">
@@ -186,10 +190,12 @@ $(() => {
       </div>
     </nav>
     `
-      // $('body .navbar').remove();
       $('body').append($($nav));
+
+      // enable the event handlers when a new nav bar is appended
       buttonEventControls();
     } else {
+      // The appearance of nav bar when user is logged in
       $nav = `
       <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -251,23 +257,18 @@ $(() => {
         </div>
       </nav>
       `
-      // $('body .navbar').remove();
+
       $('body').append($nav)
+
+      // enable the event handlers when a new nav bar is appended
       buttonEventControls();
     }
   }
-  // $('body').append($nav1)
 
-  // window.nav.update = updateNav;
 
   getMyDetails()
     .then(function( json ) {
-    console.log(json)
     updateNav(json.user);
   });
-
-  //  $('body').append($nav1)
-
-
 
 })

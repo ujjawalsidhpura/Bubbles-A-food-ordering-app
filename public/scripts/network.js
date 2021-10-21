@@ -1,3 +1,6 @@
+// This is an ajax helper function file
+// It has all of the ajax functions to control the get and post methods
+
 function logIn(data) {
   return $.ajax({
     method: "POST",

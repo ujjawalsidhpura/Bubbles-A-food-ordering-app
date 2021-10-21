@@ -12,3 +12,24 @@
   position: fixed;
   top: 3em;
 }
+
+.cart-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-price {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-cart-quantity {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-total-price {
+  margin-top: 1em;
+  font-weight: 600px;
+  font-size: 24px;
+}

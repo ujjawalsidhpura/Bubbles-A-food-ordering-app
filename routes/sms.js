@@ -4,31 +4,16 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
 const sms = require('twilio')(accountSid, authToken);
 
 const sendSMS = function (data) {
+
   // Helper To Frame a message //
   const orderMessageMaker = function (data) {
     const clientName = data[0].client;
     let message = `An order placed by: ${clientName}. Order details:`;
-    let array = []
-    let result = []
-    let count = {}
-    for (let eachItem of data) {
-      array.push(eachItem.name)
+
+    for (let item of data) {
+      message += ` ${item.name} : ${item.quantity} `
     }
-    array.forEach(item => {
-      if (count[item]) {
-        count[item] += 1
-        return
-      }
-      count[item] = 1
-    })
-    for (let prop in count) {
-      if (count[prop] >= 2) {
-        result.push(prop)
-      }
-    }
-    for (let item in count) {
-      message += `${count[item]} ${item} `
-    }
+
     return message;
   }
 
@@ -77,3 +62,24 @@ module.exports = sendSMS;
 
 
 
+// let array = []
+    // let result = []
+    // let count = {}
+    // for (let eachItem of data) {
+    //   array.push(eachItem.name)
+    // }
+    // array.forEach(item => {
+    //   if (count[item]) {
+    //     count[item] += 1
+    //     return
+    //   }
+    //   count[item] = 1
+    // })
+    // for (let prop in count) {
+    //   if (count[prop] >= 2) {
+    //     result.push(prop)
+    //   }
+    // }
+    // for (let item in count) {
+    //   message += `${count[item]} ${item} `
+    // }

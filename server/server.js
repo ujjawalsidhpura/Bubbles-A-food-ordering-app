@@ -42,23 +42,6 @@ app.use(cookieSession({
 }))
 // app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, '../public')));
-// Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
-// const usersRoutes = require("../routes/users");
-// const widgetsRoutes = require("../routes/widgets");
-// const menusRoutes = require("../routes/menus");
-// const loginRoutes = require("../routes/login");
-// const ordersRoutes = require("../routes/orders") /* to be modified later */
-// Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-// app.use("/api/users", usersRoutes(db));
-// app.use("/api/widgets", widgetsRoutes(db));
-// app.use("/api/menus", menusRoutes(db));
-// app.use("/api/login", loginRoutes(db));
-// app.use("/api/orders", ordersRoutes(db)); /* to be modified later */
-
-// const usersRoutes = require("../routes/users");
-// const widgetsRoutes = require("../routes/widgets");
 
 // /api/endoints
 
@@ -71,37 +54,6 @@ const userRouter = express.Router();
 userRoutes(userRouter, database);
 app.use('/users', userRouter);
 
-// const menusRoutes = require("../routes/menus");
-// const loginRoutes = require("../routes/login");
-// const registerRoutes = require("../routes/register");
-// const logoutRoutes = require("../routes/logout");
-// const loggedinRoutes = require("../routes/loggedin");
-// Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-// app.use("/api/users", usersRoutes(db));
-// app.use("/api/widgets", widgetsRoutes(db));
-// app.use("/api/menus", menusRoutes(db));
-// app.use("/api/login", loginRoutes(db));
-// app.use("/api/register", registerRoutes(db));
-// app.use("/api/logout", logoutRoutes(db));
-// app.use("/", loggedinRoutes(db));
-// const usersRoutes = require("../routes/users");
-// const widgetsRoutes = require("../routes/widgets");
-// const menusRoutes = require("../routes/menus");
-// const loginRoutes = require("../routes/login");
-// const ordersRoutes = require("../routes/orders");
-// Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-// app.use("/api/users", usersRoutes(db));
-// app.use("/api/widgets", widgetsRoutes(db));
-// app.use("/api/menus", menusRoutes(db));
-// app.use("/api/login", loginRoutes(db));
-// app.use("/api/orders", ordersRoutes(db));
-// Note: mount other resources here, using the same pattern above
-
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
   res.render("index");
