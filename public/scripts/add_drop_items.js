@@ -27,19 +27,24 @@ export const add_drop_button_event = function(){
         $("#my-cart").removeClass("my-cart-flex").addClass("my-cart");
       })
 
+      let cart_total_price = 0;
       // render the html for each object in the object,
       // which will be shown when click the shoppin cart
       for (const eachObject in object) {
         const $cartItem = `
-        <div class="card">
+        <div class="card" style = "width: 80%">
           <span class="cart-image"> <img style = "max-width: 100px" src=${object[eachObject].image_url}> </span>
-          <span class="description"><b>Description: </b>${object[eachObject].name} </span>
+          <span class="cart-name"><b>Name: </b>${object[eachObject].name} </span>
           <span class="cart-price"><b>Price: </b>${object[eachObject].price} </span>
           <span class = "my-cart-quantity"><b>Quantity: </b>${object[eachObject].quantity}</span>
+          <span class="cart-price"><b>Sum: </b>${(object[eachObject].price * object[eachObject].quantity).toFixed(2)} </span>
         </div>
       `
+        cart_total_price += object[eachObject].price * object[eachObject].quantity;
         $("#my-cart").append($cartItem);
       }
+      cart_total_price = cart_total_price.toFixed(2);
+      $("#my-cart").append(`<span class = "cart-total-price">Total Price: ${cart_total_price}</span>`)
     }
 
     // Find the tilte of "this" (or current) card where we click the add button
@@ -152,17 +157,24 @@ export const add_drop_button_event = function(){
         $(".cover").hide();
         $("#my-cart").removeClass("my-cart-flex").addClass("my-cart");
       })
+      let cart_total_price = 0;
+      // render the html for each object in the object,
+      // which will be shown when click the shoppin cart
       for (const eachObject in object) {
         const $cartItem = `
-        <div class="card">
+        <div class="card" style = "width: 80%">
           <span class="cart-image"> <img style = "max-width: 100px" src=${object[eachObject].image_url}> </span>
-          <span class="description"><b>Description: </b>${object[eachObject].name} </span>
+          <span class="cart-name"><b>Name: </b>${object[eachObject].name} </span>
           <span class="cart-price"><b>Price: </b>${object[eachObject].price} </span>
           <span class = "my-cart-quantity"><b>Quantity: </b>${object[eachObject].quantity}</span>
+          <span class="cart-price"><b>Sum: </b>${(object[eachObject].price * object[eachObject].quantity).toFixed(2)} </span>
         </div>
       `
+        cart_total_price += object[eachObject].price * object[eachObject].quantity;
         $("#my-cart").append($cartItem);
       }
+      cart_total_price = cart_total_price.toFixed(2);
+      $("#my-cart").append(`<span class = "cart-total-price">Total Price: ${cart_total_price}</span>`)
     }
 
     let this_item = $(this).closest(".card-content").find(".title").text();
