@@ -63,7 +63,6 @@ module.exports = function (router, database) {
         Promise.all(promiseArray)
           .then(() => {
 
-            console.log(order_id)
             database.getOrdersByOrderID(order_id)
               .then(data => {
                 console.log("sms data:", data)
