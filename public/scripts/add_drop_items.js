@@ -5,7 +5,7 @@ export const add_drop_button_event = function(){
   let array = [];
 
   // This is the initialization for the object will will be changed every time add/drop items
-  const object = {};
+  let object = {};
 
   // All the event handlers when click the ADD button
   $("button.add-button").click(function(){
@@ -134,7 +134,9 @@ export const add_drop_button_event = function(){
   // Send data to place order ajax when click place order button
   $('#order-submit-btn').on('click', function (event) {
     event.preventDefault();
-    placeOrder(array)
+    placeOrder(array);
+    object = {};
+    array = [];
   })
 
   // animation effects for add and drop buttons
