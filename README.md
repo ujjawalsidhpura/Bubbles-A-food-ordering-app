@@ -1,25 +1,15 @@
 # Bubbles - A food delivery app for a fictitious Bubble Tea joint, just around the corner of your nearest street!
 
-Welcome to the order of contact-less transactions. Why should our restaurant Bubbles behind in this race...so here we are, our team of 3, created this food delivery app for customers craving some yummy bubble teas. YES, we only sell bubbles teas and Yes we deliver.
-User can create profile using our slick login form. Once logged in, user can place orders using +/- tabs to add items to the cart. Once your cart is ready, place an order. Our app will notify us via an SMS with yout order. Don't worry, we will also update YOU via sms on an expected time. For techsavvy people: this is a full stack app with a local database specially designed by us. You can refer ERD diagram to under entity relations. This is a single page app that leverages best of express , jQuery and other platforms to render best user interface without any page referesh. Great, isn't it!
+Welcome to the world of contact-less transactions. Why should our restaurant Bubbles behind in this race...so here we are, our team of 3, created this food delivery app for customers craving some yummy bubble teas. YES, we only sell bubbles teas and Yes we deliver. <br />
+User can create profile using our slick login form. Once logged in, user can place orders using +/- tabs to add items to the cart. Once your cart is ready, place an order. Our app will notify us via an SMS with yout order. Don't worry, we will also update YOU via sms on an expected time. <br />
+For techsavvy people: this is a full stack app with a local database specially designed by us. You can refer ERD diagram to under entity relations. This is a single page app that leverages best of express , jQuery and other platforms to render best user interface without any page referesh. Great, isn't it!
 
 ## This is how it looks.
 
-| !["Signup/Login Form"](https://github.com/ujjawalsidhpura/midterm_project/blob/master/docs/signupForm.png?raw=true) |
+| !["App Flow "](https://github.com/ujjawalsidhpura/midterm_project/blob/master/docs/app.gif?raw=true) |
 | :-----------------------------------------------------------------------------------------------------------------: |
-|                                                 _SignUp/LoginForm_                                                  |
+|                                                 _App Flow_                                                  |
 
-| !["menu"](https://github.com/ujjawalsidhpura/midterm_project/blob/master/docs/menu.png?raw=true) |
-| :----------------------------------------------------------------------------------------------: |
-|                                              _menu_                                              |
-
-| !["cart"](https://github.com/ujjawalsidhpura/midterm_project/blob/master/docs/cart.png?raw=true) |
-| :----------------------------------------------------------------------------------------------: |
-|                                              _cart_                                              |
-
-| !["sms"](https://github.com/ujjawalsidhpura/midterm_project/blob/master/docs/sms.png?raw=true) |
-| :--------------------------------------------------------------------------------------------: |
-|                                             _sms_                                              |
 
 | !["ERD"](https://github.com/ujjawalsidhpura/midterm_project/blob/master/docs/erd_database_schema.png?raw=true) |
 | :------------------------------------------------------------------------------------------------------------: |
