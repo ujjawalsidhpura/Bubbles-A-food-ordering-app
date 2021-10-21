@@ -42,6 +42,15 @@ function placeOrder(menu_array){
   })
 }
 
+function getMyOrderHistory(){
+  console.log("get my order history");
+  return $.ajax({
+    method: "GET",
+    url: "/api/order-history"
+  })
+}
+
+
 function getOrder(){
   console.log("get order");
   return $.ajax({

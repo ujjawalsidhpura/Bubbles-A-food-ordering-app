@@ -78,6 +78,16 @@ module.exports = function (router, database) {
 
   })
 
+  router.get("/order-history", (req, res) => {
+    const customer_id = req.session.userId;
+    if (customer_id) {
+      database.getOrderHistories(customer_id)
+              .then(data => {
+                console.log("order-history:", data)
+              });
+    }
+  })
+
   return router;
 
 }

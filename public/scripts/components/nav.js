@@ -1,3 +1,5 @@
+import {order_history_event} from "../get_my_order_history.js"
+
 // This component renders the nav bar of our app, which responsive according to the user state
 $(() => {
   const buttonEventControls = function(){
@@ -208,6 +210,8 @@ $(() => {
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
+
+          <a class = "navbar-item order-history"> My order Histories</a>
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
@@ -256,11 +260,14 @@ $(() => {
           </div>
         </div>
       </nav>
-      `
+      `;
 
       $('body').append($nav)
 
+
+
       // enable the event handlers when a new nav bar is appended
+      order_history_event();
       buttonEventControls();
     }
   }
