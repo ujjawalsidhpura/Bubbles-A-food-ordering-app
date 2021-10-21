@@ -42,7 +42,7 @@ module.exports = function (router, database) {
   router.post('/orders', (req, res) => {
     const orderItems = req.body.menu_array
     const customer_id = req.session.userId;
-    const time = new Date();
+    const time = new Date()
     let order_id;
 
     /* Order of Events that happen on 'place order'*/
