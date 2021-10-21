@@ -20,7 +20,7 @@ export const order_history_event = function(){
     <div class="order-history-card card" style = "width: 80%">
          <span class="history-id"><b>Customer Name: </b>${orderHistoryItem.customer_name} </span>
           <span class="history-id"><b>Order History ID: </b>${orderHistoryItem.order_id} </span>
-          <span class="history-total-price"><b>Total Price: </b>${orderHistoryItem.total_price} </span>
+          <span class="history-total-price"><b>Total Price: $</b>${orderHistoryItem.total_price} </span>
           <span class="history-total-price"><b>Order Time: </b>${orderHistoryItem.order_time.slice(0,10) + " " + orderHistoryItem.order_time.slice(11,19)} </span>
     </div>
     <button>View Details</button>
@@ -33,6 +33,15 @@ export const order_history_event = function(){
     for (const orderHistoryItem of order_history_data) {
       const $orderHistoryItem = createOrderHistoryItem(orderHistoryItem);
       $("#my-history").append($orderHistoryItem);
+      $(".order-history-card").on("mouseenter", function() {
+        $(this).css("box-shadow", "10px 5px 5px #60a3bc");
+        $(this).css("width", "60%")
+      });
+
+      $(".order-history-card").on("mouseleave", function() {
+        $(this).css("box-shadow", "none");
+        $(this).css("width", "80%")
+      });
     }
   }
 

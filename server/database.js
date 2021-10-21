@@ -139,7 +139,7 @@ const getOrderHistories = function (customer_id) {
   JOIN customers ON customer_id = customers.id
   WHERE customer_id = $1
   GROUP BY orders.id, customers.id
-  Order BY orders.id;
+  Order BY orders.id DESC;
   `;
 
   const queryParams = [customer_id];
