@@ -58,3 +58,14 @@ function getOrder(){
     url: "/api/orders/:id"
   })
 }
+
+
+function sendOrderID(id) {
+  // call the renderMenus function by ajax get /api/menus which loads our menus table
+  return $.ajax({
+    url: '/api/order-detail/:id',
+    method: "POST",
+    dataType: "json",
+    data: {id}
+  });
+};

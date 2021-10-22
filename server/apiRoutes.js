@@ -83,13 +83,25 @@ module.exports = function (router, database) {
     if (customer_id) {
       database.getOrderHistories(customer_id)
               .then(data => {
-                console.log("order-history:", data);
                 return res.send(data);
               })
               .catch(err => {
                 console.log(err);
               });
     }
+  })
+
+  router.post('/order-detail/:id', (req, res) => {
+    const order_id = req.body.id
+    database.getOrderDetailsByOrderId(order_id)
+      .then(data => {
+        return res.send(data);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   })
 
   return router;
