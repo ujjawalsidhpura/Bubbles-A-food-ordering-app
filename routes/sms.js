@@ -4,7 +4,7 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
 const sms = require('twilio')(accountSid, authToken);
 
 const sendSMS = function (data) {
-
+  console.log('sms initiated')
   // Helper To Frame a message //
   const orderMessageMaker = function (data) {
     const clientName = data[0].client;
