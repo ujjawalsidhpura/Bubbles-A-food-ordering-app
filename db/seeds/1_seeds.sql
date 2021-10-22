@@ -20,27 +20,4 @@ VALUES ('Classic Milk Bubble Tea', 'This is where the legacy of bubble tea begin
         10.25, 'https://www.siftandsimmer.com/wp-content/uploads/2020/12/real-taro-milk-bubble-tea1.jpg', 'Taro, pearls, fresh milk, sugar', TRUE), --- menu id 7
         ('Matcha Bubble Tea', 'Matcha has a bright, vegetal, and slightly bitter taste, with notes of sweetness and umami. ... Matcha is full of concentrated amounts of all of the many health benefits of green tea. It is also high in caffeine, making it a healthy and energizing tea to start the day with!',
         10.00, 'https://www.vitamix.com/media/other/images/Iced-Matcha-Bubble-Tea-470-449.jpg', 'Mathca, pearls, fresh milk, sugar', TRUE); --- menu id 8
-INSERT INTO orders (customer_id, order_time, status)
-VALUES (3, '2021-10-16 10:39:50', FALSE), --- order_id 1
-       (1, '2021-10-15 12:12:12', TRUE),  --- order_id 2
-       (2, '2021-10-15 16:16:16', TRUE),  --- order_id 3
-       (3, '2021-10-13 14:00:00', TRUE);  --- order_id 4
-          --- order_id 5
-INSERT INTO order_details (order_id, menu_id)
-VALUES (1, 1),
-       (1, 2),
-       (1, 2),
-       (1, 3),
-       (2, 1),
-       (2, 1),
-       (2, 2),
-       (2, 3),
-       (3, 1),
-       (3, 2),
-       (3, 3),
-       (4, 3),
-       (4, 2),
-       (4, 3);
-      --(5, 1);
-      --(5, 2);
 
