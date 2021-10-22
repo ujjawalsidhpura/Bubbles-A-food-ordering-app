@@ -92,7 +92,7 @@
     width: 100%;
     bottom: 0;
     right: 0;
-
+    z-index: 200;
   }
 }
 @media screen and (max-width: 624px) {

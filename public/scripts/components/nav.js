@@ -213,12 +213,12 @@ $(() => {
             <span aria-hidden="true"></span>
           </a>
 
-          <a class = "navbar-item order-history"> My order Histories</a>
+
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-
+          <a class = "navbar-item order-history"> My order Histories</a>
 
         </div>
         <div class="navbar-end">

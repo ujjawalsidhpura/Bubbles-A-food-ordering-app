@@ -17,3 +17,10 @@
   display: flex;
   flex-direction: column;
 }
+
+#my-order-detail-exit{
+  font-size: 0.8em;
+  align-self: flex-start;
+  margin: 2em 0 -2em 2em;
+
+}
