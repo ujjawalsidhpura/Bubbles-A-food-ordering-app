@@ -1,3 +1,4 @@
+import {order_history_event} from "../get_my_order_history.js"
 // This component renders the nav bar of our app, which responsive according to the user state
 $(() => {
   const buttonEventControls = function(){
@@ -108,6 +109,21 @@ $(() => {
 
     // click event handler for logout button which will update nav bar when we log out
     logOutButton.on("click", () => {
+      console.log("hello");
+      $(".total-price-value").text("0.00");
+      $(".shopping-cart-counter").text(0);
+      $(".shopping-cart-counter").css("visibility","hidden");
+      $(".quantity").text(0)
+      $(".quantity").css("visibility","hidden");
+      $(".drop-button").css("visibility","hidden");
+      $("#my-cart").empty();
+      $("#my-cart").append(`<a class="button is-danger is-light" id="my-cart-exit">&times;</a>`);
+      $("#my-cart-exit").click(function(){
+      $(".cover").hide();
+      $("#my-cart").removeClass("my-cart-flex").addClass("my-cart");
+      $("#menu-container").removeClass("menu-container-hide").addClass("menu-container");
+      })
+
       signUpInput.hide();
       loginInput.hide();
       logOut()
@@ -208,6 +224,8 @@ $(() => {
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
+
+          <a class = "navbar-item order-history"> My order Histories</a>
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
@@ -256,11 +274,14 @@ $(() => {
           </div>
         </div>
       </nav>
-      `
+      `;
 
       $('body').append($nav)
 
+
+
       // enable the event handlers when a new nav bar is appended
+      order_history_event();
       buttonEventControls();
     }
   }

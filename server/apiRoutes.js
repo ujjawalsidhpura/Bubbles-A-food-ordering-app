@@ -40,9 +40,9 @@ module.exports = function (router, database) {
   })
 
   router.post('/orders', (req, res) => {
-    const orderItems = req.body.menu_array
+    const orderItems = req.body.menu_array;
     const customer_id = req.session.userId;
-    const time = new Date();
+    const time = new Date().toLocaleString("en-US", {timeZone: "America/New_York"});    ;
     let order_id;
 
     /* Order of Events that happen on 'place order'*/
@@ -75,6 +75,32 @@ module.exports = function (router, database) {
 
       })
 
+  })
+
+  router.get("/order-history", (req, res) => {
+    const customer_id = req.session.userId;
+    if (customer_id) {
+      database.getOrderHistories(customer_id)
+              .then(data => {
+                return res.send(data);
+              })
+              .catch(err => {
+                console.log(err);
+              });
+    }
+  })
+
+  router.post('/order-detail/:id', (req, res) => {
+    const order_id = req.body.id
+    database.getOrderDetailsByOrderId(order_id)
+      .then(data => {
+        return res.send(data);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   })
 
   return router;
