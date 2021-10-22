@@ -15,8 +15,11 @@ VALUES ('Classic Milk Bubble Tea', 'This is where the legacy of bubble tea begin
         ('Chocolate Bubble Tea', 'If you are a fan of liquid brownies, you must give this chocolate beverage snack a try. It gives a creamy, silky feel that makes it perfect as an after-dinner dessert.',
         9.25, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD9ihMIQRu6t_xmlG3B97V78jsYxcoQxi9GQ&usqp=CAU', 'chocolate powder, sugar, creamer, chocolate chips, and tapioca pearls', TRUE), --- menu id 5
         ('Strawberry Bubble Tea', 'Fresh strawberries are boiled into a sweet simple syrup that is then mixed with milk and tea to create a delicious strawberry boba tea.',
-        9.25, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyb30VR8Goso1kqF78MwsYclNd3VbUUxQHrQ&usqp=CAU', 'strawberries, sugar, green or black tea, milk, and tapioca pearls', TRUE); --- menu id 5
-
+        9.25, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyb30VR8Goso1kqF78MwsYclNd3VbUUxQHrQ&usqp=CAU', 'strawberries, sugar, green or black tea, milk, and tapioca pearls', TRUE), --- menu id 6
+        ('Taro Bubble Tea', 'The purple color of the taro boba tea is what makes it more popular and a favorite among fans. Made from the Asian sweet root called Taro, this purple drink offers an earthy, nutty, and vanilla boba flavor.',
+        10.25, 'https://www.siftandsimmer.com/wp-content/uploads/2020/12/real-taro-milk-bubble-tea1.jpg', 'Taro, pearls, fresh milk, sugar', TRUE), --- menu id 7
+        ('Matcha Bubble Tea', 'Matcha has a bright, vegetal, and slightly bitter taste, with notes of sweetness and umami. ... Matcha is full of concentrated amounts of all of the many health benefits of green tea. It is also high in caffeine, making it a healthy and energizing tea to start the day with!',
+        10.00, 'https://www.vitamix.com/media/other/images/Iced-Matcha-Bubble-Tea-470-449.jpg', 'Mathca, pearls, fresh milk, sugar', TRUE); --- menu id 8
 INSERT INTO orders (customer_id, order_time, status)
 VALUES (3, '2021-10-16 10:39:50', FALSE), --- order_id 1
        (1, '2021-10-15 12:12:12', TRUE),  --- order_id 2
