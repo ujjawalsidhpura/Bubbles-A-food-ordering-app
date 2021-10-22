@@ -1,6 +1,6 @@
 # Bubbles - A food delivery app for a fictitious Bubble Tea joint, just around the corner of your nearest street!
 
-Welcome to the world of contact-less transactions. Why should our restaurant Bubbles behind in this race...so here we are, our team of 3, created this food delivery app for customers craving some yummy bubble teas. YES, we only sell bubbles teas and Yes we deliver. <br /> 
+Welcome to the world of contact-less transactions. Why should our restaurant Bubbles stay behind in this race...so here we are, our team of 3, created this food delivery app for customers craving some yummy bubble teas. YES, we only sell bubbles teas and Yes we deliver. <br /> 
 <br />
 User can create profile using our slick login form. Once logged in, user can place orders using +/- tabs to add items to the cart. Once your cart is ready, place an order. Our app will notify us via an SMS with yout order. Don't worry, we will also update YOU via sms on an expected time. <br />
 <br />
@@ -8,7 +8,7 @@ For techsavvy people: this is a full stack app with a local database specially d
 
 ## This is how it looks.
 
-| !["App Flow "](https://github.com/ujjawalsidhpura/midterm_project/blob/master/docs/app.gif?raw=true) |
+| !["App Flow "](https://github.com/ujjawalsidhpura/midterm_project/blob/master/docs/finalapp.gif?raw=true) |
 | :-----------------------------------------------------------------------------------------------------------------: |
 |                                                 _App Flow_                                                  |
 
