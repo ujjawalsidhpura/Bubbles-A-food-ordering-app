@@ -65,3 +65,15 @@
   margin-top: 0.5em;
   color: red;
 }
+
+@media screen and (max-width: 1124px) {
+  .flex{
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  .flex{
+    width: 80vw;
+  }
+}

@@ -59,23 +59,6 @@ const addOrder = function (customer_id, order_time) {
     .catch((err) => err);
 };
 
-// const addOrderDetails = function (order_id, menu_array) {
-
-//   const queryString = `
-//     INSERT INTO order_details (order_id, menu_id)
-//     VALUES ($1, $2)
-//   `
-//   let ans;
-//   for (let item of menu_array) {
-//     let queryParams = [order_id, item];
-
-//     ans = pool.query(queryString, queryParams)
-//       .then((result) => result.rows)
-//       .catch((err) => err);
-//     }
-//     return ans;
-// }
-
 const addOrderDetail = function (order_id, menu_id) {
   const queryString = `
     INSERT INTO order_details (order_id, menu_id)
@@ -91,16 +74,15 @@ const addOrderDetail = function (order_id, menu_id) {
 // know what they have ordered
 const getOrderDetailsByOrderId = function (order_id) {
   const queryString = `
-  SELECT id, customer_name, item, COUNT(*) AS quantity, Sum(price) AS price
-  FROM (
-  SELECT customers.id, customers.name AS customer_name, menus.name AS item, menus.price AS price
-  FROM order_details
-  JOIN menus ON menu_id = menus.id
-  JOIN orders ON order_id = orders.id
-  JOIN customers ON customer_id = customers.id
-  WHERE orders.id = $1
-  ) AS orders
-  GROUP BY id,customer_name, item;
+  SELECT orders.id AS order_id, customers.name AS client, menus.name, menus.image_url, count(menus.name) as quantity, Sum(menus.price) AS price
+  FROM order_details JOIN menus
+  ON order_details.menu_id = menus.id
+  JOIN orders
+  ON order_details.order_id = orders.id
+  JOIN customers
+  ON orders.customer_id = customers.id
+  WHERE order_id = $1
+  GROUP BY orders.id, menus.name, menus.image_url, customers.phone, customers.name;
   `;
 
   const queryParams = [order_id];
@@ -132,13 +114,14 @@ const getOrdersPrice = function (order_id) {
 // This is used to show customers their order history
 const getOrderHistories = function (customer_id) {
   const queryString = `
-  SELECT customers.id, customers.name AS customer_name,  SUM(menus.price) AS total_price
+  SELECT customers.id, customers.name AS customer_name,  orders.id AS order_id, SUM(menus.price) AS total_price,  orders.order_time
   FROM order_details
   JOIN menus ON menu_id = menus.id
   JOIN orders ON order_id = orders.id
   JOIN customers ON customer_id = customers.id
-  WHERE customer_id = 3
-  GROUP BY orders.id, customers.id;
+  WHERE customer_id = $1
+  GROUP BY orders.id, customers.id
+  Order BY orders.id DESC;
   `;
 
   const queryParams = [customer_id];

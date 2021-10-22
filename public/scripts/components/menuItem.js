@@ -19,6 +19,8 @@ const createMenuItem = (menuItem) => {
         <p class="title is-3">${menuItem.name}</p>
       </div>
       <div class="content">
+      <img class="min-img" src=${menuItem.image_url} alt="Placeholder image">
+      <br>
         <span class="description"><b>Description: </b>${menuItem.description} </span>
         <br>
         <span class="ingredients"><b>Ingredients: </b>${menuItem.ingredients} </span>

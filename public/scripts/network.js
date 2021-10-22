@@ -17,7 +17,7 @@ function signUp(data) {
   });
 }
 
-function logOut() {
+function logOut(){
   return $.ajax({
     method: "POST",
     url: "/users/logout"
@@ -31,7 +31,7 @@ function getMyDetails() {
   });
 }
 
-function placeOrder(menu_array) {
+function placeOrder(menu_array){
   console.log("order is placed");
   return $.ajax({
     method: "POST",
@@ -42,7 +42,16 @@ function placeOrder(menu_array) {
   })
 }
 
-function getOrder() {
+function getMyOrderHistory(){
+  console.log("get my order history");
+  return $.ajax({
+    method: "GET",
+    url: "/api/order-history"
+  })
+}
+
+
+function getOrder(){
   console.log("get order");
   return $.ajax({
     method: "GET",
@@ -50,3 +59,13 @@ function getOrder() {
   })
 }
 
+
+function sendOrderID(id) {
+  // call the renderMenus function by ajax get /api/menus which loads our menus table
+  return $.ajax({
+    url: '/api/order-detail/:id',
+    method: "POST",
+    dataType: "json",
+    data: {id}
+  });
+};

@@ -9,6 +9,11 @@ export const add_drop_button_event = function(){
 
   // All the event handlers when click the ADD button
   $("button.add-button").click(function(){
+    // Clear shopping cart when log out
+    $('.logout-button').on('click', function () {
+      object = {};
+      array = [];
+    })
 
     // create html for each item that will show up in the shopping cart
     const createCartItem = function (object) {
@@ -25,6 +30,7 @@ export const add_drop_button_event = function(){
       $("#my-cart-exit").click(function(){
         $(".cover").hide();
         $("#my-cart").removeClass("my-cart-flex").addClass("my-cart");
+        $("#menu-container").addClass("menu-container").removeClass("menu-container-hide")
       })
 
       let cart_total_price = 0;
@@ -139,6 +145,7 @@ export const add_drop_button_event = function(){
     array = [];
   })
 
+
   // animation effects for add and drop buttons
   $("button.add-button").mousedown(function(){
     $(this).siblings(".quantity").removeClass("quantity").addClass("quantity-add");
@@ -153,11 +160,18 @@ export const add_drop_button_event = function(){
 
   // click event handler for drop button, very similar to add button event but do the opposite
   $("button.drop-button").click(function(){
+    // Clear shopping cart when log out
+    $('.logout-button').on('click', function () {
+      object = {};
+      array = [];
+    })
+
     const createCartItem = function (object) {
       $("#my-cart").append(`<a class="button is-danger is-light" id="my-cart-exit">&times;</a>`);
       $("#my-cart-exit").click(function(){
         $(".cover").hide();
         $("#my-cart").removeClass("my-cart-flex").addClass("my-cart");
+        $("#menu-container").addClass("menu-container").removeClass("menu-container-hide")
       })
       let cart_total_price = 0;
       // render the html for each object in the object,

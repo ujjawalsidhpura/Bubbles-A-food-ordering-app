@@ -1,8 +1,8 @@
-.my-cart {
+.my-order-detail {
   display: none;
 }
 
-.my-cart-flex {
+.my-order-detail-flex {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -10,31 +10,15 @@
   flex-direction: column;
   z-index: 10000;
   position: relative;
-  margin-top: 10em;
+  top: 1em;
 }
 
-.cart-name {
+.my-order-detail-flex > .card{
   display: flex;
   flex-direction: column;
 }
 
-.cart-price {
-  display: flex;
-  flex-direction: column;
-}
-
-.my-cart-quantity {
-  display: flex;
-  flex-direction: column;
-}
-
-.cart-total-price {
-  margin-top: 1em;
-  font-weight: 600px;
-  font-size: 24px;
-}
-
-#my-cart-exit{
+#my-order-detail-exit{
   font-size: 0.8em;
   align-self: flex-start;
   margin: 2em 0 -2em 2em;

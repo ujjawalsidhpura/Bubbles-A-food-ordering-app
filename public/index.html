@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="./styles/nav.css">
   <link rel="stylesheet" href="./styles/footer.css">
   <link rel="stylesheet" href="./styles/my-cart.css">
+  <link rel="stylesheet" href="./styles/order-history.css">
+  <link rel="stylesheet" href="./styles/order_detail.css">
+
 
 
   <!-- <link rel="stylesheet" href="./styles/nav.css"> -->
@@ -35,10 +38,13 @@
   <script type="module" src="./scripts/add_drop_items.js"></script>
   <script type="module" src="./scripts/show_shoppin_cart.js"></script>
   <script type="module" src="./scripts/place_order_event.js"></script>
+  <script type="module" src="./scripts/get_my_order_history.js"></script>
 </head>
 
 <body class="has-navbar-fixed-top">
+  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
 
+  </nav>
 
 
   <div class="cover"></div>
@@ -46,6 +52,14 @@
 
     <div id = "my-cart" class = 'card my-cart'>
       <a class="button is-danger is-light" id="my-cart-exit">&times;</a>
+    </div>
+
+    <div id = "my-history" class = 'card my-history'>
+      <a class="button is-danger is-light" id="my-history-exit">&times;</a>
+    </div>
+
+    <div id = "my-order-detail" class = 'card my-order-detail'>
+      <a class="button is-danger is-light" id="my-order-detail-exit">&times;</a>
     </div>
 
     <div class="card login-form">
@@ -65,22 +79,23 @@
       </div>
     </div>
 
-    <div class="menu-container">
+    <div id = "menu-container" class="menu-container">
     </div>
+
   </main>
   <footer>
 
     <div class="shopping-cart">
       <p class = "shopping-cart-counter">0</p>
-    <i class="fas fa-shopping-cart"></i>
-    <div class = "total-price">
-      <span>$</span>
-      <p class = "total-price-value">
-        0.00
-      </p>
+      <i class="fas fa-shopping-cart"></i>
+      <div class = "total-price">
+        <span>$</span>
+        <p class = "total-price-value">
+          0.00
+        </p>
+      </div>
     </div>
     <button type="submit" class="button is-primary place-order" id="order-submit-btn">Place Order</button>
-    </div>
   </footer>
 </body>
 </html>
