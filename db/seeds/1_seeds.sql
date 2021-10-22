@@ -9,10 +9,13 @@ VALUES ('Classic Milk Bubble Tea', 'This is where the legacy of bubble tea begin
 ('Mango Bubble Tea', 'It’s just the right amount of creamy, with a fresh green tea base and bright, bold mango flavor. Served with ice for an extra chilled drink on a hot summer day.',
 8.75, 'https://thelittlestcrumb.com/wp-content/uploads/mango-milk-tea-featured-image-1.jpg', 'mango juice, green tea, milk, simple syrup and boba', TRUE), --- menu id 2
         ('Brown Sugar Bubble Tea', 'The cup is usually rimmed with brown sugar syrup to make a pattern. This is why the drink is also known as tiger milk tea or dirty milk tea.',
-        9.95, 'https://www.foxyfolksy.com/wp-content/uploads/2020/06/tiger-sugar-milk-drink.jpg', 'brown sugar, fresh milk, and tapioca balls', TRUE), --- menu id 3
+        9.25, 'https://www.foxyfolksy.com/wp-content/uploads/2020/06/tiger-sugar-milk-drink.jpg', 'brown sugar, fresh milk, and tapioca balls', TRUE), --- menu id 3
         ('THAI Bubble Tea', 'Most local boba shop owners will add food coloring for intense brightness. This Thai boba tea is an iced drink that brings the streets of Thailand into your mouth. It is no wonder why it is one of the most popular bubble tea flavors.',
-        10.25, 'https://www.rachelcooksthai.com/wp-content/uploads/2013/07/thai-tea-boba-0.jpg', 'a mix of Ceylon and sweetened condensed milk', TRUE); --- menu id 4
-
+        10.25, 'https://www.rachelcooksthai.com/wp-content/uploads/2013/07/thai-tea-boba-0.jpg', 'a mix of Ceylon and sweetened condensed milk', TRUE), --- menu id 4
+        ('Taro Bubble Tea', 'The purple color of the taro boba tea is what makes it more popular and a favorite among fans. Made from the Asian sweet root called Taro, this purple drink offers an earthy, nutty, and vanilla boba flavor.',
+        10.25, 'https://www.siftandsimmer.com/wp-content/uploads/2020/12/real-taro-milk-bubble-tea1.jpg', 'Taro, pearls, fresh milk, sugar', TRUE),
+        ('Matcha Bubble Tea', 'Matcha has a bright, vegetal, and slightly bitter taste, with notes of sweetness and umami. ... Matcha is full of concentrated amounts of all of the many health benefits of green tea. It is also high in caffeine, making it a healthy and energizing tea to start the day with!',
+        10.00, 'https://www.vitamix.com/media/other/images/Iced-Matcha-Bubble-Tea-470-449.jpg', 'Mathca, pearls, fresh milk, sugar', TRUE);
 INSERT INTO orders (customer_id, order_time, status)
 VALUES (3, '2021-10-16 10:39:50', FALSE), --- order_id 1
        (1, '2021-10-15 12:12:12', TRUE),  --- order_id 2
