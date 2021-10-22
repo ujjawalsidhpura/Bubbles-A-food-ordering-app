@@ -62,15 +62,6 @@ export const order_history_event = function(){
     for (const order_detail of order_details) {
       const $orderDetail = createOrderDetail(order_detail);
       $("#my-order-detail").append($orderDetail);
-      $(".order-detail-card").on("mouseenter", function() {
-        $(this).css("box-shadow", "10px 5px 5px #60a3bc");
-        $(this).css("width", "60%")
-      });
-
-      $(".order-detail-card").on("mouseleave", function() {
-        $(this).css("box-shadow", "none");
-        $(this).css("width", "80%")
-      });
     }
   }
 
@@ -80,13 +71,15 @@ export const order_history_event = function(){
       const $orderHistoryItem = createOrderHistoryItem(orderHistoryItem);
       $("#my-history").append($orderHistoryItem);
       $(".order-history-card").on("mouseenter", function() {
-        $(this).css("box-shadow", "10px 5px 5px #60a3bc");
-        $(this).css("width", "60%")
+        $(this).css("background-color", "#f78fb3");
+        $(this).css("width", "70%")
+        $(this).css("background-color","  box-shadow: 10px 10px 5px grey;")
       });
 
       $(".order-history-card").on("mouseleave", function() {
-        $(this).css("box-shadow", "none");
+        $(this).css("background-color", "whitesmoke");
         $(this).css("width", "80%")
+        $(this).css("background-color","box-shadow: none;")
       });
     }
     $(".order-history-card").on("click", function(){
