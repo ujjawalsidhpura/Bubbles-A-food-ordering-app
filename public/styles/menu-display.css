@@ -118,9 +118,18 @@
   }
 }
 
-@media screen and (max-width: 512px) {
+@media screen and (max-width: 768px) {
+  .description{
+    display: none;
+  }
+  .card-content{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 524px) {
+
   .card{
-    /* flex-direction: column; */
+    font-size: 0.8em;
   }
 }
 
