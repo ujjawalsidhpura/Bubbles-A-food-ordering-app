@@ -10,7 +10,8 @@ export const order_history_event = function(){
   $("#my-history-exit").on("click", function(){
     $(".cover").hide();
     $("#my-history").addClass("my-history").removeClass("my-history-flex");
-    $("#menu-container").addClass("menu-container").removeClass("menu-container-hide")
+    $("#menu-container").addClass("menu-container").removeClass("menu-container-hide");
+    $(".order-history-card").remove();
   })
 
 
