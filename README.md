@@ -8,7 +8,7 @@ For techsavvy people: this is a full stack app with a local database specially d
 
 ## This is how it looks.
 
-| !["App Flow "](https://github.com/ujjawalsidhpura/midterm_project/blob/master/docs/app.gif?raw=true) |
+| !["App Flow "](https://github.com/ujjawalsidhpura/midterm_project/blob/master/docs/finalapp.gif?raw=true) |
 | :-----------------------------------------------------------------------------------------------------------------: |
 |                                                 _App Flow_                                                  |
 
