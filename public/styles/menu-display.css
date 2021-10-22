@@ -112,6 +112,9 @@
   .card-content{
     width: 90%;
   }
+  img {
+    max-width: 200px;
+  }
   .min-img {
     display:inline-flex
   }
@@ -130,9 +133,15 @@
   .card-content{
     width: 100%;
   }
+
+  img {
+    max-width: 200px;
+  }
 }
 @media screen and (max-width: 524px) {
-
+  img {
+    max-width: 200px;
+  }
   .card{
     font-size: 0.8em;
   }
