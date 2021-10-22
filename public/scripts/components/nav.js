@@ -25,6 +25,10 @@ $(() => {
 
     // Open sign up form
     signUpButton.on('click', function(event) {
+      signUpButton.removeClass('is-light');
+      signUpButton.addClass('is-primary');
+      loginButton.addClass('is-light');
+      loginButton.removeClass('is-primary');
       console.log("Here")
       if (!loginForm.is(":visible")) {
         loginForm.addClass('flex');
@@ -79,6 +83,10 @@ $(() => {
 
     // Open login form
     loginButton.on('click', function(event) {
+      loginButton.removeClass('is-light');
+      loginButton.addClass('is-primary');
+      signUpButton.addClass('is-light');
+      signUpButton.removeClass('is-primary');
       if (!loginForm.is(":visible")) {
         loginInput.show()
         loginForm.addClass('flex');
@@ -153,13 +161,7 @@ $(() => {
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">
-            Home
-          </a>
 
-          <a class="navbar-item">
-            Documentation
-          </a>
 
       </div>
       <div class="navbar-end">
@@ -198,13 +200,7 @@ $(() => {
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">
-              Home
-            </a>
 
-            <a class="navbar-item">
-              Documentation
-            </a>
 
         </div>
         <div class="navbar-end">
