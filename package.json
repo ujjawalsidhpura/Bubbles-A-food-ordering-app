@@ -9,7 +9,7 @@
     "local": "./node_modules/.bin/nodemon -L --ignore public/",
     "db:reset": "node bin/resetdb.js"
   },
-  "author": "Lighthouse Labs",
+  "author": "Shuhao Zhang", "Chukwuebuka (Ebuka) Monema","Ujjawal (Ujay) Sidhpura" ,"Lighthouse Labs" 
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
