@@ -40,8 +40,7 @@ const sendSMS = function (data) {
   }
 
   const twilioNum = '+13433125653';
-  const restaurantOwnerNum = '+12048089972';
-  // '+15197817563' //
+  const restaurantOwnerNum = '+18735090139';
   const messageToOwner = orderMessageMaker(data);
   const messageToClient = clientMessageMaker(data);
   const clientNum = data[0].phone;

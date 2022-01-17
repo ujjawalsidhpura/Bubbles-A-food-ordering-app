@@ -42,7 +42,7 @@ module.exports = function (router, database) {
   router.post('/orders', (req, res) => {
     const orderItems = req.body.menu_array;
     const customer_id = req.session.userId;
-    const time = new Date().toLocaleString("en-US", {timeZone: "America/New_York"});    ;
+    const time = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });;
     let order_id;
 
     /* Order of Events that happen on 'place order'*/
@@ -77,16 +77,17 @@ module.exports = function (router, database) {
 
   })
 
+
   router.get("/order-history", (req, res) => {
     const customer_id = req.session.userId;
     if (customer_id) {
       database.getOrderHistories(customer_id)
-              .then(data => {
-                return res.send(data);
-              })
-              .catch(err => {
-                console.log(err);
-              });
+        .then(data => {
+          return res.send(data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   })
 
